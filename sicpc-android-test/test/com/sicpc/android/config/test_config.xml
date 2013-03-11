@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sicpc>
+	<dataFolder>/sdcard/test</dataFolder>
+	<!-- Start of first level -->
+	<nav>
+		<first id="" image="" title="level1">
+			<second id="" image="" title="level2">
+				<third id="" image="" title="level3-1" actionType="book" actionUrl=""/>
+				<third id="" image="" title="level3-1" actionType="video" actionUrl=""/>
+				<third id="" image="" title="level3-1" actionType="image" actionUrl=""/>
+			</second>
+		</first>
+	</nav>
+</sicpc>
