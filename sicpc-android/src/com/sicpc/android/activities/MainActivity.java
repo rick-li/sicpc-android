@@ -1,4 +1,8 @@
-package com.sicpc.android;
+package com.sicpc.android.activities;
+
+import com.sicpc.android.R;
+import com.sicpc.android.R.layout;
+import com.sicpc.android.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;
