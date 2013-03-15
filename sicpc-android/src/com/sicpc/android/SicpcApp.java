@@ -1,7 +1,9 @@
 package com.sicpc.android;
-import android.app.Application;
+
+import java.util.List;
+
+import com.google.inject.Module;
 
 
-public class SicpcApp extends Application {
-
+public class SicpcApp {
 }

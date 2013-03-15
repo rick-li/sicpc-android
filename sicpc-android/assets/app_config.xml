@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sicpc>
-	<dataFolder>/sdcard/test</dataFolder>
+	<dataFolder>/sdcard/sicpc</dataFolder>
+	<openVideo>open.mp4</openVideo>
 	<!-- Start of first level -->
 	<nav>
 		<navNode image="" title="level1">

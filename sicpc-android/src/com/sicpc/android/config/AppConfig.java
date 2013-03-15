@@ -9,9 +9,11 @@ import com.sicpc.android.nav.NavNode;
  * App level configuration.
  * 
  */
+
 public class AppConfig {
 	// All data file are relative to this data folder
 	private String dataFolder = "";
+	private String openVideo = "";
 
 	private List<NavNode> navNodes;
 
@@ -30,5 +32,16 @@ public class AppConfig {
 	public void setNavNodes(List<NavNode> navNodes) {
 		this.navNodes = navNodes;
 	}
+
+	public String getOpenVideo() {
+		return openVideo;
+	}
+
+	public void setOpenVideo(String openVideo) {
+		this.openVideo = openVideo;
+	}
+
+
+	
 
 }

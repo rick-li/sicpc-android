@@ -3,12 +3,12 @@
 	<dataFolder>/sdcard/test</dataFolder>
 	<!-- Start of first level -->
 	<nav>
-		<first id="" image="" title="level1">
-			<second id="" image="" title="level2">
-				<third id="" image="" title="level3-1" actionType="book" actionUrl=""/>
-				<third id="" image="" title="level3-1" actionType="video" actionUrl=""/>
-				<third id="" image="" title="level3-1" actionType="image" actionUrl=""/>
-			</second>
-		</first>
+		<navNode image="" title="level1">
+			<navNode image="" title="level2">
+				<navNode id="" image="" title="level3-1" actionType="book" actionUrl=""/>
+				<navNode id="" image="" title="level3-1" actionType="video" actionUrl=""/>
+				<navNode id="" image="" title="level3-1" actionType="image" actionUrl=""/>
+			</navNode>
+		</navNode>
 	</nav>
 </sicpc>

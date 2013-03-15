@@ -1,6 +1,7 @@
 package com.sicpc.android.nav;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class NavNode {
 	
 	private URL actionUrl;
 
-	private List<NavNode> children;
+	private List<NavNode> children = new ArrayList<NavNode>();
 	
 	public Level getLevel() {
 		return level;

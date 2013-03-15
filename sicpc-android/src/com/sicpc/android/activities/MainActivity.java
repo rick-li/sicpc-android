@@ -1,15 +1,17 @@
 package com.sicpc.android.activities;
 
-import com.sicpc.android.R;
-import com.sicpc.android.R.layout;
-import com.sicpc.android.R.menu;
-
+import roboguice.activity.RoboActivity;
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
+import com.google.inject.Inject;
+import com.sicpc.android.R;
+import com.sicpc.android.config.AppConfig;
 
+public class MainActivity extends RoboActivity {
+
+	@Inject AppConfig appConfig;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

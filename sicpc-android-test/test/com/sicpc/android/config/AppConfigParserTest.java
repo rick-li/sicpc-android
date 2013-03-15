@@ -3,31 +3,36 @@ package com.sicpc.android.config;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
-import org.junit.Before;
+import junit.framework.Assert;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.sicpc.android.SicpcApp;
-import com.xtremelabs.robolectric.RobolectricTestRunner;
+import com.google.inject.Inject;
+import com.sicpc.android.nav.NavNode;
+import com.sicpc.android.test.RoboInjectedTestRunner;
 
-@RunWith(RobolectricTestRunner.class)
+@RunWith(RoboInjectedTestRunner.class)
 public class AppConfigParserTest {
 
-	AppConfigParser parser;
-
-	@Before
-	public void init() {
-		parser = new AppConfigParser();
-	}
-
-	@Test
+	@Inject AppConfigProvider parser;
+	@Inject 
+	
 	public void parseConfigXml() {
 		URL configXml = AppConfigParserTest.class
 				.getResource("test_config.xml");
-		parser.setConfigXml(configXml);
+		try {
+			parser.setConfigXml(configXml.openStream());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 //		parser.setResources(new SicpcApp().getResources());
+		
 		AppConfig cfg = null;
 		try {
 			cfg = parser.parseConfigXml();
@@ -35,6 +40,17 @@ public class AppConfigParserTest {
 			e.printStackTrace();
 		}
 		assertThat("/sdcard/test", equalTo(cfg.getDataFolder()));
-
+		
+		List<NavNode> firstNodes = cfg.getNavNodes();
+		Assert.assertEquals(1, firstNodes.size());
+		
+		NavNode firstNode = firstNodes.get(0);
+		Assert.assertEquals("level1", firstNode.getTitle());
+		List<NavNode> secondNodes = firstNode.getChildren();
+		Assert.assertEquals(1, secondNodes.size());
+		Assert.assertEquals("level2", secondNodes.get(0).getTitle());
+		
+		Assert.assertEquals(3, secondNodes.get(0).getChildren().size());
+		
 	}
 }
