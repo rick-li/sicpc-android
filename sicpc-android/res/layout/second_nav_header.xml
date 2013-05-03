@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:accordion="http://schemas.android.com/apk/res/com.sicpc.android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/second_nav_header"
+        android:layout_width="fill_parent"
+        android:background="@drawable/cv__chart_explorer_gradient"
+        android:layout_height="40dp" >
+
+        <com.sicpc.android.nav.view.ToggleImageLabeledButton
+            android:id="@+id/second_nav_header_toggleImage"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="8dp"
+            accordion:icon_resource="@drawable/cv_chart_explorer_accordion_button_close"
+            accordion:icon_resource_off="@drawable/cv_chart_explorer_accordion_button_open" />
+
+        <TextView
+            android:id="@+id/second_nav_header_text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:textColor="@drawable/cv__chart_button_text_color"
+            android:layout_toRightOf="@+id/second_nav_header_toggleImage"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="5dp"
+            android:text="Category" />
+
+    </RelativeLayout>
+
+    <LinearLayout  
+        android:id="@+id/third_nav_list"  
+        android:orientation="vertical"
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content"  
+        />  
+</LinearLayout>

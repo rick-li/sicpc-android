@@ -20,7 +20,6 @@ import com.sicpc.android.test.RoboInjectedTestRunner;
 public class AppConfigParserTest {
 
 	@Inject AppConfigProvider parser;
-	@Inject 
 	
 	public void parseConfigXml() {
 		URL configXml = AppConfigParserTest.class

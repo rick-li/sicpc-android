@@ -74,6 +74,15 @@ public class NavNode {
 	public void setChildren(List<NavNode> children) {
 		this.children = children;
 	}
+
+	@Override
+	public String toString() {
+		return "NavNode [level=" + level + ", title=" + title + ", image="
+				+ image + ", actionType=" + actionType + ", actionUrl="
+				+ actionUrl + "]";
+	}
+
+
 	
 	
 }

@@ -1,16 +1,55 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <LinearLayout
+        android:id="@+id/leftContent"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.6"
+        android:background="@color/left_bg"
+        android:orientation="vertical" >
 
-</RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_weight="0.4"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/canScrollUp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="canscrollup"
+            android:visibility="invisible" />
+
+        <com.sicpc.android.nav.view.ScrollContainer
+            android:id="@+id/secondNavScrollContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="410dp" >
+
+            <LinearLayout
+                android:id="@+id/secondNavRoot"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:isScrollContainer="true"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </com.sicpc.android.nav.view.ScrollContainer>
+
+        <TextView
+            android:id="@+id/canScrollDown"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="canscrolldown"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -84,11 +84,7 @@ public class AppConfigProvider implements Provider<AppConfig>{
 		for (int i = 0; i < childNodes.getLength(); i++) {
 			Node node = childNodes.item(i);
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
-				if (node.hasChildNodes()) {
-					navNode.getChildren().add(parseNavNode(node));
-				} else {
-					navNode.getChildren().add(navNode);
-				}
+				navNode.getChildren().add(parseNavNode(node));
 			}
 		}
 		return navNode;

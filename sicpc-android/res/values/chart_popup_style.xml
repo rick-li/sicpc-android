@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="chart_popwindow_anim_style" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/chart_popshow_anim</item>
+        <item name="android:windowExitAnimation">@anim/chart_pophidden_anim</item>
+    </style>
+
+</resources>
