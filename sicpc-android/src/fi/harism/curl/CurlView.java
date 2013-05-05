@@ -17,7 +17,7 @@
 package fi.harism.curl;
 
 import android.content.Context;
-import android.graphics.Canvas;
+import android.graphics.PixelFormat;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.opengl.GLSurfaceView;
@@ -25,7 +25,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
 import android.view.View;
 
 /**
@@ -147,6 +146,9 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 	 * Initialize method.
 	 */
 	private void init(Context ctx) {
+		this.setZOrderOnTop(true);
+		setEGLConfigChooser(8, 8, 8, 8, 16, 0);
+		getHolder().setFormat(PixelFormat.TRANSLUCENT);
 		mRenderer = new CurlRenderer(this);
 		setRenderer(mRenderer);
 		setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
@@ -164,6 +166,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 
 	@Override
 	public void onDrawFrame() {
+		
 		// We are not animating.
 		if (mAnimate == false) {
 			return;
@@ -245,12 +248,13 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 	}
 
 	float maxScale = 3l;
+
 	public void onScale(float scaleFactor) {
 		this.scaleFactor *= scaleFactor;
 		if (this.scaleFactor < 1) {
 			this.scaleFactor = 1;
 		}
-		if(this.scaleFactor > maxScale){
+		if (this.scaleFactor > maxScale) {
 			this.scaleFactor = maxScale;
 		}
 		this.mRenderer.setScaleFactor(this.scaleFactor);
@@ -273,7 +277,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 		}
 		if (scaleFactor != 1) {
 			isScaled = true;
-		}else{
+		} else {
 			isScaled = false;
 			mRenderer.resetStoredTranslateDis();
 		}
@@ -346,9 +350,12 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 			// + curlStartX + "diff: "+(me.getX() -
 			// curlStartX)+" curl started: "+curlStarted);
 			if (isScaled && !isScaling) {
-				//pan
-				mRenderer.setTrasnlateDistance(mRenderer.translateX(me.getX()) - mRenderer.translateX(translateStartP.x),
-						mRenderer.translateY(me.getY()) - mRenderer.translateY(translateStartP.y));
+				// pan
+				mRenderer.setTrasnlateDistance(
+						mRenderer.translateX(me.getX())
+								- mRenderer.translateX(translateStartP.x),
+						mRenderer.translateY(me.getY())
+								- mRenderer.translateY(translateStartP.y));
 				requestRender();
 			} else
 
@@ -359,7 +366,8 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 					mDragStartPos.x = rightRect.left;
 					startCurl(CURL_LEFT);
 					curlStarted = true;
-				} else if (((me.getX() - curlStartX) < -2)  && mCurrentIndex < mPageProvider.getPageCount()) {
+				} else if (((me.getX() - curlStartX) < -2)
+						&& mCurrentIndex < mPageProvider.getPageCount()) {
 					// Log.d(TAG, "left");
 					// direction is left
 					mDragStartPos.x = rightRect.right;
@@ -376,9 +384,9 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 		case MotionEvent.ACTION_UP: {
 			curlStarted = false;
 			isScaling = false;
-			if(isScaled){
+			if (isScaled) {
 				mRenderer.storeTranslateDis();
-			}else{
+			} else {
 				mRenderer.resetStoredTranslateDis();
 			}
 			if (mCurlState == CURL_LEFT || mCurlState == CURL_RIGHT) {
@@ -466,8 +474,8 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 					curlDir.y = curlPos.x - pageRect.left;
 				}
 			}
-		} 
-		
+		}
+
 		else if (mCurlState == CURL_LEFT) {
 			RectF pageRect = mRenderer.getPageRect(CurlRenderer.PAGE_LEFT);
 			if (curlPos.x <= pageRect.left) {
@@ -635,6 +643,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 				mRenderer.addCurlMesh(mPageRight);
 			}
 
+
 			// Add curled page to renderer.
 			mPageCurl.setRect(mRenderer.getPageRect(CurlRenderer.PAGE_RIGHT));
 			mPageCurl.setFlipTexture(false);
@@ -658,7 +667,6 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 			CurlMesh curl = mPageLeft;
 			mPageLeft = mPageCurl;
 			mPageCurl = curl;
-
 			if (mCurrentIndex > 1) {
 				updatePage(mPageLeft.getTexturePage(), mCurrentIndex - 2);
 				mPageLeft.setFlipTexture(true);
@@ -812,6 +820,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 		}
 
 		if (rightIdx >= 0 && rightIdx < mPageProvider.getPageCount()) {
+			Log.d(TAG, "creating mesh rightIdx: " + rightIdx);
 			updatePage(mPageRight.getTexturePage(), rightIdx);
 			mPageRight.setFlipTexture(false);
 			mPageRight.setRect(mRenderer.getPageRect(CurlRenderer.PAGE_RIGHT));
@@ -819,6 +828,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 			mRenderer.addCurlMesh(mPageRight);
 		}
 		if (leftIdx >= 0 && leftIdx < mPageProvider.getPageCount()) {
+			Log.d(TAG, "creating mesh leftIdx: " + leftIdx);
 			updatePage(mPageLeft.getTexturePage(), leftIdx);
 			mPageLeft.setFlipTexture(true);
 			mPageLeft.setRect(mRenderer.getPageRect(CurlRenderer.PAGE_LEFT));
@@ -910,7 +920,5 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 	public void setScaleFactor(float scaleFactor) {
 		this.scaleFactor = scaleFactor;
 	}
-	
-	
 
 }

@@ -25,6 +25,7 @@ import fi.harism.curl.CurlView;
 
 public class BookFragment extends Fragment {
 	private CurlView mCurlView;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -40,9 +41,9 @@ public class BookFragment extends Fragment {
 		mCurlView.setPageProvider(new PageProvider());
 		mCurlView.setSizeChangedObserver(new SizeChangedObserver());
 		mCurlView.setCurrentIndex(index);
-		mCurlView.setBackgroundColor(0xFF202830);
-		final Button exitScaleBtn = (Button)root.findViewById(R.id.pinchExit);
-		exitScaleBtn.setOnClickListener(new OnClickListener(){
+		mCurlView.setBackgroundColor(Color.TRANSPARENT);
+		final Button exitScaleBtn = (Button) root.findViewById(R.id.pinchExit);
+		exitScaleBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View view) {
@@ -53,7 +54,7 @@ public class BookFragment extends Fragment {
 				mCurlView.setScaleFactor(1f);
 				view.setVisibility(View.GONE);
 			}
-			
+
 		});
 		ScaleGestureDetector mScaleDetector = new ScaleGestureDetector(
 				activity, new OnScaleGestureListener() {
@@ -93,7 +94,7 @@ public class BookFragment extends Fragment {
 
 		@Override
 		public int getPageCount() {
-			return 5;
+			return 4;
 		}
 
 		private Bitmap loadBitmap(int width, int height, int index) {
