@@ -9,7 +9,11 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.OnScaleGestureListener;
 import android.view.View;
@@ -24,6 +28,7 @@ import fi.harism.curl.CurlPage;
 import fi.harism.curl.CurlView;
 
 public class BookFragment extends Fragment {
+	protected static final String TAG = "BookFragment";
 	private CurlView mCurlView;
 
 	@Override
@@ -42,20 +47,19 @@ public class BookFragment extends Fragment {
 		mCurlView.setSizeChangedObserver(new SizeChangedObserver());
 		mCurlView.setCurrentIndex(index);
 		mCurlView.setBackgroundColor(Color.TRANSPARENT);
-		final Button exitScaleBtn = (Button) root.findViewById(R.id.pinchExit);
-		exitScaleBtn.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View view) {
-				mCurlView.getmRenderer().exitPinch();
-				mCurlView.requestRender();
-				mCurlView.setScaling(false);
-				mCurlView.setScaled(false);
-				mCurlView.setScaleFactor(1f);
-				view.setVisibility(View.GONE);
-			}
+		GestureDetector doubleTapDetector = new GestureDetector(activity,
+				new SimpleOnGestureListener() {
+					public boolean onDoubleTap(MotionEvent e) {
+						mCurlView.getmRenderer().exitPinch();
+						mCurlView.requestRender();
+						mCurlView.setScaling(false);
+						mCurlView.setScaled(false);
+						mCurlView.setScaleFactor(1f);
+						return true;
+					}
+				});
 
-		});
 		ScaleGestureDetector mScaleDetector = new ScaleGestureDetector(
 				activity, new OnScaleGestureListener() {
 
@@ -69,7 +73,6 @@ public class BookFragment extends Fragment {
 					@Override
 					public boolean onScaleBegin(ScaleGestureDetector detector) {
 						mCurlView.setScaling(true);
-						exitScaleBtn.setVisibility(View.VISIBLE);
 						return true;
 					}
 
@@ -80,6 +83,7 @@ public class BookFragment extends Fragment {
 
 				});
 		mCurlView.setScaleDetector(mScaleDetector);
+		mCurlView.setDoubleTapDetector(doubleTapDetector);
 		return root;
 	}
 

@@ -23,6 +23,8 @@ import android.graphics.RectF;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -92,8 +94,19 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 	private int mViewMode = SHOW_ONE_PAGE;
 
 	private ScaleGestureDetector scaleDetector;
+	
+	private GestureDetector doubleTapDetector;
 
 	private boolean isScaling = false;
+
+	
+	public GestureDetector getDoubleTapDetector() {
+		return doubleTapDetector;
+	}
+
+	public void setDoubleTapDetector(GestureDetector doubleTapDetector) {
+		this.doubleTapDetector = doubleTapDetector;
+	}
 
 	public ScaleGestureDetector getScaleDetector() {
 		return scaleDetector;
@@ -282,6 +295,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 			mRenderer.resetStoredTranslateDis();
 		}
 		this.scaleDetector.onTouchEvent(me);
+		this.doubleTapDetector.onTouchEvent(me);
 
 		// We need page rects quite extensively so get them for later use.
 		RectF rightRect = mRenderer.getPageRect(CurlRenderer.PAGE_RIGHT);
