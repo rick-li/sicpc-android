@@ -24,6 +24,7 @@ public class MainActivity extends RoboFragmentActivity  {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		fixClassLoaderIssue();
 		setContentView(R.layout.activity_main);
 		navController = new SecondNavController(this);
 		navController.renderSecondNav(appConfig.getNavNodes().get(0)
@@ -34,28 +35,12 @@ public class MainActivity extends RoboFragmentActivity  {
 		ft.add(R.id.leftContent, bookFragment);
 		ft.commit();
 
-		View root = findViewById(R.id.root);
-		final ScrollContainer secondNavScrollContainer = (ScrollContainer) findViewById(R.id.secondNavScrollContainer);
-		secondNavScrollContainer.setActivity(this);
-		root.getViewTreeObserver().addOnGlobalLayoutListener(
-				new ViewTreeObserver.OnGlobalLayoutListener() {
-					@Override
-					public void onGlobalLayout() {
-
-						TextView sup = (TextView) findViewById(R.id.canScrollUp);
-						TextView sdown = (TextView) findViewById(R.id.canScrollDown);
-						if (secondNavScrollContainer.canScrollVertically(1)) {
-							// down
-							sdown.setVisibility(View.VISIBLE);
-						}
-
-						if (secondNavScrollContainer.canScrollVertically(-1)) {
-							// up
-							sup.setVisibility(View.VISIBLE);
-						}
-					}
-
-				});
-
+		
 	}
+	
+	private static void fixClassLoaderIssue()
+	{
+	ClassLoader myClassLoader = MainActivity.class.getClassLoader();
+	Thread.currentThread().setContextClassLoader(myClassLoader);
+	}  
 }

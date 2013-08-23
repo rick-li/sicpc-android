@@ -22,34 +22,48 @@
         android:layout_marginTop="50dp"
         android:layout_weight="0.4"
         android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/canScrollUp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="canscrollup"
-            android:visibility="invisible" />
-
-        <com.sicpc.android.nav.view.ScrollContainer
-            android:id="@+id/secondNavScrollContainer"
-            android:layout_width="fill_parent"
-            android:layout_height="410dp" >
-
+		
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            
+            
+            <com.sicpc.android.nav.view.CurvedList
+        android:id="@+id/curvedList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:scrollbars="none"
+        android:dividerHeight="20dp" >
+        
+    </com.sicpc.android.nav.view.CurvedList>
+    
+            <!-- 
+        <ListView android:id="@+id/listtest"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            
+            
+        </ListView>
+         -->    
+        </RelativeLayout>
+        
+        
             <LinearLayout
                 android:id="@+id/secondNavRoot"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:isScrollContainer="true"
                 android:orientation="vertical" >
+                
             </LinearLayout>
-        </com.sicpc.android.nav.view.ScrollContainer>
+        
 
-        <TextView
-            android:id="@+id/canScrollDown"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="canscrolldown"
-            android:visibility="invisible" />
+        
     </LinearLayout>
 
 </LinearLayout>

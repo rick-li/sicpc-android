@@ -5,12 +5,17 @@ import java.util.List;
 import android.app.Activity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.sicpc.android.R;
+import com.sicpc.android.nav.view.CircularListAdapter;
+import com.sicpc.android.nav.view.CurvedList;
 
 public class SecondNavController {
 	private static final String TAG = "SecondNavController";
@@ -23,11 +28,58 @@ public class SecondNavController {
 	}
 
 	public void renderSecondNav(List<NavNode> secondNavs) {
-		LinearLayout secondNavRoot = (LinearLayout) ctx
-				.findViewById(R.id.secondNavRoot);
-		for (NavNode secondNode : secondNavs) {
-			secondNavRoot.addView(createSecondNav(secondNode));
-		}
+		// LinearLayout secondNavRoot = (LinearLayout) ctx
+		// .findViewById(R.id.secondNavRoot);
+		// for (NavNode secondNode : secondNavs) {
+		// secondNavRoot.addView(createSecondNav(secondNode));
+		// }
+		// ListView listest = (ListView)ctx.findViewById(R.id.listtest);
+		String[] circularData = new String[] { "Flinging", "This", "List,",
+				"Makes", "It", "Appear", "To", "Scroll", "On", "And", "On",
+				"And", "On" };
+
+		// 2. Create your adapter
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(ctx,
+				android.R.layout.simple_list_item_1, circularData);
+
+		// 3. Wrap your adapter within the CircularListAdapter
+		final CircularListAdapter circularListAdapter = new CircularListAdapter(
+				adapter);
+
+		// 4. Set the adapter to your ListView
+		// ListView listtest = (ListView)ctx.findViewById(R.id.listtest);
+		// listtest.setAdapter(circularListAdapter);
+
+		CurvedList curvedList = (CurvedList) ctx.findViewById(R.id.curvedList);
+		curvedList.setAdapter(new CircularListAdapter(new BaseAdapter() {
+			LayoutInflater mInflater = ctx.getLayoutInflater();
+
+			@Override
+			public View getView(int position, View convertView, ViewGroup parent) {
+				if (convertView == null) {
+					convertView = mInflater.inflate(R.layout.listitem, null);
+				}
+				((TextView) convertView).setText("Hellooooooooooooo "
+						+ position);
+				return convertView;
+			}
+
+			@Override
+			public long getItemId(int position) {
+				return position;
+			}
+
+			@Override
+			public Object getItem(int position) {
+				return "Hellooooooooooooo " + position;
+			}
+
+			@Override
+			public int getCount() {
+				return 100;
+			}
+		}));
+
 	}
 
 	private LinearLayout createSecondNav(NavNode navNode) {

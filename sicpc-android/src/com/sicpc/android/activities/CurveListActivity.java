@@ -124,7 +124,7 @@ public class CurveListActivity extends Activity {
 	ListView invisiList;
 
 	private void startSlideAnimation2(final ListView list1, final ListView list2) {
-		if(list1.getVisibility() == View.INVISIBLE){
+	 	if(list1.getVisibility() == View.INVISIBLE){
 			visiList = list2;
 			invisiList = list1;
 		}else{
