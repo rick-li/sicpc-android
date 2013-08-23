@@ -25,6 +25,10 @@ public class CurvedList extends ListView {
 	private int maxAlpha = 255;
 	private int minAlpha = 100;
 
+	public CurvedList(Context context) {
+		super(context);
+	}
+
 	public CurvedList(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
@@ -32,38 +36,49 @@ public class CurvedList extends ListView {
 
 	@Override
 	protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
-		Bitmap bitmap = getChildDrawingCache(child);
 		// (top,left) is the pixel position of the child inside the list
-		final int marginTop = 100;
+		final int marginTop = 10;
 		final int top = child.getTop();
 		int left = child.getLeft();
 		// center point of child
 		final int childCenterY = child.getHeight() / 2 + marginTop;
 		int childCenterX = child.getWidth() / 2;
 		// center of list
-		final int parentCenterY = getHeight() / 2 ;
+		final int parentCenterY = getHeight() / 2;
 		// center point of child relative to list
 		final int absChildCenterY = child.getTop() + childCenterY;
 		// distance of child center to the list center
 		final int distanceY = parentCenterY - absChildCenterY;
-		// radius of imaginary cirlce
+		// radius of imaginary circle
 		final int r = getHeight();
 
-		prepareMatrix(mMatrix, distanceY, r);
+		float scaleRate = prepareMatrix(mMatrix, distanceY, r);
 
+		Bitmap bitmap = getChildDrawingCache(child, scaleRate);
 		mMatrix.preTranslate(-childCenterX, -childCenterY);
 		mMatrix.postTranslate(childCenterX, childCenterY);
 		mMatrix.postTranslate(left, top);
-
-		canvas.drawBitmap(bitmap, mMatrix, mPaint);
+		int scaledWidth = (int)(bitmap.getWidth() * scaleRate);
+		if(scaledWidth < 1){
+			scaledWidth = 1;
+		}
+		int scaledHeight = (int)(bitmap.getHeight() * scaleRate);
+		if(scaledHeight <1){
+			scaledHeight = 1;
+		}
+		Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap,
+				scaledWidth, scaledHeight,
+				true);
+		canvas.drawBitmap(scaledBitmap, mMatrix, mPaint);
+//		canvas.drawBitmap(bitmap, mMatrix, mPaint);
 		return false;
 	}
 
-	private void prepareMatrix(final Matrix outMatrix, int distanceY, int r) {
+	private float prepareMatrix(final Matrix outMatrix, int distanceY, int r) {
 		// clip the distance
 		final int d = Math.min(r, Math.abs(distanceY));
 		// use circle formula
-		final float translateZ = (float) (r - Math.sqrt((r * r) - (d * d)));
+		final float translateZ = (float) ((r - Math.sqrt((r * r) - (d * d))));
 		if (maxTranslateXZ == 0) {
 			maxTranslateXZ = translateZ + 1;
 		}
@@ -74,20 +89,41 @@ public class CurvedList extends ListView {
 		}
 		Log.i(TAG, "Alpha is " + alpha);
 		Log.i(TAG, "translateZ is " + translateZ);
+		Log.i(TAG, "maxTranslateXZ is " + maxTranslateXZ);
 		mCamera.save();
 		mCamera.translate(maxTranslateXZ - translateZ, 0,
 				-(maxTranslateXZ - translateZ));
+//		mCamera.translate(maxTranslateXZ - translateZ, 0, 0);
 
-		// mCamera.rotateY((float) degree);
 		mCamera.getMatrix(outMatrix);
 		mCamera.restore();
 
+		float fontSize = 12;
+		fontSize = fontSize
+				* (1 - ((maxTranslateXZ - translateZ) / maxTranslateXZ));
+		Log.i(TAG, "font size is " + fontSize);
+		float scaleRate = (1 - ((maxTranslateXZ - translateZ) / maxTranslateXZ))/2;
 		mPaint.setColor(Color.argb(alpha, 0, 0, 0));
+		return (1-scaleRate);
 	}
-
-	private Bitmap getChildDrawingCache(final View child) {
+	private int listitemHeight = 0;
+	private Bitmap getChildDrawingCache(final View child, float scaleRate) {
+//		Bitmap bitmap = null;
 		Bitmap bitmap = child.getDrawingCache();
 		if (bitmap == null) {
+			int paddingTopButtom = (int)(10*scaleRate);
+//			Log.d(TAG, "paddingTopButtom: "+paddingTopButtom);
+//		if(listitemHeight == 0){
+//			listitemHeight = child.getHeight();
+//		}
+			Log.d(TAG, "list item height: "+listitemHeight);
+			
+//			child.setPadding(0, paddingTopButtom, 0, 0);
+//			int newHeight = (int)(scaleRate*listitemHeight) + 2 * paddingTopButtom;
+//			int newWidth = child.getWidth();
+			
+//			Log.d(TAG, "list item size: "+newHeight + " : "+newWidth);
+//			child.setLayoutParams(new LayoutParams(newWidth, newHeight));
 			child.setDrawingCacheEnabled(true);
 			child.buildDrawingCache();
 			bitmap = child.getDrawingCache();

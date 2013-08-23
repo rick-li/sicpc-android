@@ -34,28 +34,28 @@ public class MainActivity extends RoboFragmentActivity  {
 		ft.add(R.id.leftContent, bookFragment);
 		ft.commit();
 
-		View root = findViewById(R.id.root);
-		final ScrollContainer secondNavScrollContainer = (ScrollContainer) findViewById(R.id.secondNavScrollContainer);
-		secondNavScrollContainer.setActivity(this);
-		root.getViewTreeObserver().addOnGlobalLayoutListener(
-				new ViewTreeObserver.OnGlobalLayoutListener() {
-					@Override
-					public void onGlobalLayout() {
-
-						TextView sup = (TextView) findViewById(R.id.canScrollUp);
-						TextView sdown = (TextView) findViewById(R.id.canScrollDown);
-						if (secondNavScrollContainer.canScrollVertically(1)) {
-							// down
-							sdown.setVisibility(View.VISIBLE);
-						}
-
-						if (secondNavScrollContainer.canScrollVertically(-1)) {
-							// up
-							sup.setVisibility(View.VISIBLE);
-						}
-					}
-
-				});
+//		View root = findViewById(R.id.root);
+//		final ScrollContainer secondNavScrollContainer = (ScrollContainer) findViewById(R.id.secondNavScrollContainer);
+//		secondNavScrollContainer.setActivity(this);
+//		root.getViewTreeObserver().addOnGlobalLayoutListener(
+//				new ViewTreeObserver.OnGlobalLayoutListener() {
+//					@Override
+//					public void onGlobalLayout() {
+//
+//						TextView sup = (TextView) findViewById(R.id.canScrollUp);
+//						TextView sdown = (TextView) findViewById(R.id.canScrollDown);
+//						if (secondNavScrollContainer.canScrollVertically(1)) {
+//							// down
+//							sdown.setVisibility(View.VISIBLE);
+//						}
+//
+//						if (secondNavScrollContainer.canScrollVertically(-1)) {
+//							// up
+//							sup.setVisibility(View.VISIBLE);
+//						}
+//					}
+//
+//				});
 
 	}
 }

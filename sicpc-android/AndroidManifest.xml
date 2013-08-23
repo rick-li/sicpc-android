@@ -36,6 +36,8 @@
             android:noHistory="true"
             android:screenOrientation="landscape" >
         </activity>
+        
+        <!-- 
         <activity
             android:name="com.sicpc.android.activities.CurveListActivity"
             android:label="@string/title_activity_curve_list" >
@@ -45,6 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+         -->
     </application>
 
 </manifest>
