@@ -22,5 +22,6 @@
     </integer-array>
 
     <string name="title_activity_curve_list">CurveListActivity</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

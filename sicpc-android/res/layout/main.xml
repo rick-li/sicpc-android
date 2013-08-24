@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/yunqi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="@dimen/main_icon_gap"
+        android:src="@drawable/main_yunqi" />
+
+    <ImageView
+        android:id="@+id/xinhun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/main_icon_gap"
+        android:layout_toLeftOf="@id/yunqi"
+        android:src="@drawable/main_xinhun" />
+
+    <ImageView
+        android:id="@+id/qingchun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/main_icon_gap"
+        android:layout_toLeftOf="@id/xinhun"
+        android:src="@drawable/main_qingchunqi" />
+
+    <ImageView
+        android:id="@+id/gengnian"
+        android:layout_marginTop="@dimen/main_icon_gap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/yunqi"
+        android:src="@drawable/main_gengnian" />
+
+    <ImageView
+        android:id="@+id/shengyuhou"
+        android:layout_marginTop="@dimen/main_icon_gap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/yunqi"
+        android:layout_toLeftOf="@id/gengnian"
+        android:src="@drawable/main_shengyuhou" />
+
+    <ImageView
+        android:id="@+id/jisheng"
+        android:layout_marginTop="@dimen/main_icon_gap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/gengnian"
+        android:src="@drawable/main_jisheng" />
+
+    <ImageView
+        android:id="@+id/laonian"
+        android:layout_marginTop="@dimen/main_icon_gap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/jisheng"
+        android:layout_below="@id/shengyuhou"
+        android:src="@drawable/main_laonian" />
+
+</RelativeLayout>

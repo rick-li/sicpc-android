@@ -13,15 +13,6 @@
         android:layout_height="wrap_content"
         android:background="#FFFFFF" >
 
-        <Button
-            android:id="@+id/pinchExit"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/pinch_exit"
-            android:visibility="gone" >
-        </Button>
     </RelativeLayout>
 
 </FrameLayout>

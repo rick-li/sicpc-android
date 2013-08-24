@@ -56,7 +56,7 @@ public class OpenActivity extends RoboActivity {
 	
 	private void gotoMainScreen(){
 		Log.i(TAG, "To Main Screen.");
-		Intent i = new Intent(this.getApplicationContext(), MainActivity.class);
+		Intent i = new Intent(this.getApplicationContext(), SubMainActivity.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		this.startActivity(i);
 	}

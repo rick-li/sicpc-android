@@ -1,7 +1,7 @@
 package com.sicpc.android.nav.view;
 
 import com.sicpc.android.R;
-import com.sicpc.android.activities.MainActivity;
+import com.sicpc.android.activities.SubMainActivity;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class ScrollContainer extends ScrollView {
 
 	private static final String TAG = "ScrollContainer";
-	private MainActivity activity;
+	private SubMainActivity activity;
 	public ScrollContainer(Context context) {
 		super(context);
 	}
@@ -26,11 +26,11 @@ public class ScrollContainer extends ScrollView {
 		super(context, attrs);
 	}
 	
-	public MainActivity getActivity() {
+	public SubMainActivity getActivity() {
 		return activity;
 	}
 
-	public void setActivity(MainActivity activity) {
+	public void setActivity(SubMainActivity activity) {
 		this.activity = activity;
 	}
 
