@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding ="utf-8"?>
+<swc xmlns="http://www.adobe.com/flash/swccatalog/9">
+  <versions>
+    <swc version="1.2" />
+    <flex version="4.6.0" build="23201" minimumSupportedVersion="3.0.0" />
+  </versions>
+  <features>
+    <feature-script-deps />
+    <feature-files />
+  </features>
+  <libraries>
+    <library path="library.swf">
+      <script name="_edbf19fb52e25e022c03524aafe8e54872a8d5792050fbc6a6d13475950da479_flash_display_Sprite" mod="1362929078037" signatureChecksum="1975941683" >
+        <def id="_edbf19fb52e25e022c03524aafe8e54872a8d5792050fbc6a6d13475950da479_flash_display_Sprite" /> 
+        <dep id="flash.system:Security" type="e" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.display:Sprite" type="i" /> 
+      </script>
+      <script name="com/sicpc/ane/AneController" mod="1362929067553" signatureChecksum="4179531999" >
+        <def id="com.sicpc.ane:AneController" /> 
+        <dep id="trace" type="e" /> 
+        <dep id="flash.external:ExtensionContext" type="e" /> 
+        <dep id="Error" type="e" /> 
+        <dep id="flash.events:StatusEvent" type="s" /> 
+        <dep id="flash.external:ExtensionContext" type="s" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.events:EventDispatcher" type="i" /> 
+        <dep id="Object" type="i" /> 
+      </script>
+      <digests>
+        <digest type="SHA-256" signed="false" value="44bbaed752334fd9054d306af526e5dbfe86af1ec5f5aa309ec06789005e21eb"   />
+      </digests>
+    </library>
+  </libraries>
+  <files>
+  </files>
+</swc>
