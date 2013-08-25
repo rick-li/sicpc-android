@@ -28,11 +28,13 @@ public class SubMainActivity extends RoboFragmentActivity  {
 		navController = new SecondNavController(this);
 		navController.renderSecondNav(appConfig.getNavNodes().get(0)
 				.getChildren());
+		
 
-		FragmentTransaction ft = this.getSupportFragmentManager().beginTransaction();
-		Fragment bookFragment = new BookFragment();
-		ft.add(R.id.leftContent, bookFragment);
-		ft.commit();
+		
+//		FragmentTransaction ft = this.getSupportFragmentManager().beginTransaction();
+//		Fragment bookFragment = new BookFragment();
+//		ft.add(R.id.leftContent, bookFragment);
+//		ft.commit();
 
 //		View root = findViewById(R.id.root);
 //		final ScrollContainer secondNavScrollContainer = (ScrollContainer) findViewById(R.id.secondNavScrollContainer);

@@ -61,7 +61,6 @@ public class CurveListActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-//				 startSlideAnimation1();
 
 				startSlideAnimation2(visiList, invisiList);
 
@@ -183,65 +182,65 @@ public class CurveListActivity extends Activity {
 		}).start();
 	}
 
-	private void slideOut(View view, int duration,
-			AnimatorListenerAdapter listener) {
-		Interpolator accelerator = new AccelerateInterpolator();
-		float startPos = view.getLeft();
-		float endPos = -view.getWidth();
-		ObjectAnimator visToInvis = ObjectAnimator.ofFloat(view, "x", startPos,
-				endPos);
-		visToInvis.setDuration(duration);
-		visToInvis.setInterpolator(accelerator);
-		if (listener != null)
-			visToInvis.addListener(listener);
-		visToInvis.start();
-	}
+//	private void slideOut(View view, int duration,
+//			AnimatorListenerAdapter listener) {
+//		Interpolator accelerator = new AccelerateInterpolator();
+//		float startPos = view.getLeft();
+//		float endPos = -view.getWidth();
+//		ObjectAnimator visToInvis = ObjectAnimator.ofFloat(view, "x", startPos,
+//				endPos);
+//		visToInvis.setDuration(duration);
+//		visToInvis.setInterpolator(accelerator);
+//		if (listener != null)
+//			visToInvis.addListener(listener);
+//		visToInvis.start();
+//	}
+//
+//	private void slideIn(View view, int startPos, int endPos, int duration,
+//			AnimatorListenerAdapter listener) {
+//		Interpolator decelerator = new DecelerateInterpolator();
+//		ObjectAnimator invisToVis = ObjectAnimator.ofFloat(view, "x", startPos,
+//				endPos);
+//		invisToVis.setDuration(duration);
+//		invisToVis.setInterpolator(decelerator);
+//		if (listener != null)
+//			invisToVis.addListener(listener);
+//		invisToVis.start();
+//	}
 
-	private void slideIn(View view, int startPos, int endPos, int duration,
-			AnimatorListenerAdapter listener) {
-		Interpolator decelerator = new DecelerateInterpolator();
-		ObjectAnimator invisToVis = ObjectAnimator.ofFloat(view, "x", startPos,
-				endPos);
-		invisToVis.setDuration(duration);
-		invisToVis.setInterpolator(decelerator);
-		if (listener != null)
-			invisToVis.addListener(listener);
-		invisToVis.start();
-	}
-
-	private void startSlideAnimation1() {
-
-		final ListView visibleList = visiList;
-		final ListView invisibleList = invisiList;
-
-//		if (list1.getVisibility() == View.GONE) {
-//			invisibleList = list1;
-//			visibleList = list2;
-//		} else {
-//			invisibleList = list2;
-//			visibleList = list1;
-//		}
-		final int duration = 500;
-		final int visibleLeft = visibleList.getLeft();
-		slideOut(visibleList, duration, new AnimatorListenerAdapter() {
-			@Override
-			public void onAnimationEnd(Animator anim) {
-				visibleList.setVisibility(View.GONE);
-				invisibleList.setVisibility(View.VISIBLE);
-				Log.i(TAG, "invisible pos: " + invisibleList.getX() + " , "
-						+ invisibleList.getY());
-				// invisToVis.start();
-//				slideIn(invisibleList, visibleList.getWidth(), visibleLeft,
-//						duration, null);
-			}
-		});
-
-		// new AnimatorListenerAdapter() {
-		// @Override
-		// public void onAnimationEnd(Animator anim) {
-		// Log.i(TAG, "animation completed.");
-		// }
-	}
+//	private void startSlideAnimation1() {
+//
+//		final ListView visibleList = visiList;
+//		final ListView invisibleList = invisiList;
+//
+////		if (list1.getVisibility() == View.GONE) {
+////			invisibleList = list1;
+////			visibleList = list2;
+////		} else {
+////			invisibleList = list2;
+////			visibleList = list1;
+////		}
+//		final int duration = 500;
+//		final int visibleLeft = visibleList.getLeft();
+//		slideOut(visibleList, duration, new AnimatorListenerAdapter() {
+//			@Override
+//			public void onAnimationEnd(Animator anim) {
+//				visibleList.setVisibility(View.GONE);
+//				invisibleList.setVisibility(View.VISIBLE);
+//				Log.i(TAG, "invisible pos: " + invisibleList.getX() + " , "
+//						+ invisibleList.getY());
+//				// invisToVis.start();
+////				slideIn(invisibleList, visibleList.getWidth(), visibleLeft,
+////						duration, null);
+//			}
+//		});
+//
+//		// new AnimatorListenerAdapter() {
+//		// @Override
+//		// public void onAnimationEnd(Animator anim) {
+//		// Log.i(TAG, "animation completed.");
+//		// }
+//	}
 
 	// private void testCurvedList(){
 	// final Activity ctx = this;

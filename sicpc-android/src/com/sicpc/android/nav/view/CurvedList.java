@@ -37,7 +37,7 @@ public class CurvedList extends ListView {
 	@Override
 	protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
 		// (top,left) is the pixel position of the child inside the list
-		final int marginTop = 10;
+		final int marginTop = 0;
 		final int top = child.getTop();
 		int left = child.getLeft();
 		// center point of child
@@ -48,7 +48,7 @@ public class CurvedList extends ListView {
 		// center point of child relative to list
 		final int absChildCenterY = child.getTop() + childCenterY;
 		// distance of child center to the list center
-		final int distanceY = parentCenterY - absChildCenterY;
+		final int distanceY = Math.abs(parentCenterY - absChildCenterY);
 		// radius of imaginary circle
 		final int r = getHeight();
 
@@ -79,11 +79,14 @@ public class CurvedList extends ListView {
 		final int d = Math.min(r, Math.abs(distanceY));
 		// use circle formula
 		final float translateZ = (float) ((r - Math.sqrt((r * r) - (d * d))));
+		
+		
+		
 		if (maxTranslateXZ == 0) {
 			maxTranslateXZ = translateZ + 1;
 		}
 		// (maxTranslateXZ - translateZ)/maxTranslateXZ = x/255;
-		int alpha = (int) ((int) (maxTranslateXZ - translateZ) * maxAlpha / maxTranslateXZ);
+		int alpha = (int) ((int) (maxTranslateXZ - translateZ - 0.3) * maxAlpha / maxTranslateXZ);
 		if (alpha < minAlpha) {
 			alpha = minAlpha;
 		}
@@ -116,7 +119,7 @@ public class CurvedList extends ListView {
 //		if(listitemHeight == 0){
 //			listitemHeight = child.getHeight();
 //		}
-			Log.d(TAG, "list item height: "+listitemHeight);
+//			Log.d(TAG, "list item height: "+listitemHeight);
 			
 //			child.setPadding(0, paddingTopButtom, 0, 0);
 //			int newHeight = (int)(scaleRate*listitemHeight) + 2 * paddingTopButtom;
