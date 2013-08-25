@@ -31,12 +31,13 @@ public class ListInOutAnimationtor {
 	ArrayAdapter<String> adaptor1;
 	ArrayAdapter<String> adaptor2;
 
-	public ListInOutAnimationtor(Activity ctx, String[] defaultListItems) {
+	public ListInOutAnimationtor(Activity ctx, ListView thirdlist1, ListView thirdlist2, String[] defaultListItems) {
 		this.ctx = ctx;
-		visiList = (ListView) ctx.findViewById(R.id.thirdList1);
-		String[] str1 = {};
-		invisiList = (ListView) ctx.findViewById(R.id.thirdList2);
-		String[] str2 = defaultListItems;
+		visiList = thirdlist1;
+		invisiList = thirdlist2;
+		
+		String[] str1 = defaultListItems;
+		String[] str2 = {};
 		ArrayList<String> ls1 = new ArrayList<String>();
 		ls1.addAll(Arrays.asList(str1));
 		
@@ -48,7 +49,7 @@ public class ListInOutAnimationtor {
 		visiList.setAdapter(adaptor1);
 		invisiList.setAdapter(adaptor2);
 		
-		startSlideAnimation2(visiList, invisiList);
+		//startSlideAnimation2(visiList, invisiList);
 	}
 
 	public void updateListItems(String[] newListItems) {
@@ -60,7 +61,7 @@ public class ListInOutAnimationtor {
 		arrayAdapter.addAll(newLs);
 		
 		arrayAdapter.notifyDataSetChanged();
-		invisiList.invalidateViews();
+//		invisiList.invalidateViews();
 		startSlideAnimation2(visiList, invisiList);
 	}
 
@@ -93,12 +94,14 @@ public class ListInOutAnimationtor {
 						e.printStackTrace();
 					}
 				}
+				//remove list itself
 				Message removeMsg = Message.obtain();
 				Bundle removeListData = new Bundle();
 				removeListData.putString(ACTION, REMOVE_LIST);
 				removeMsg.setData(removeListData);
 				pushOutHandler.sendMessage(removeMsg);
 
+				//restore list itself
 				Message restoreMsg = Message.obtain();
 				Bundle restoreListData = new Bundle();
 				restoreListData.putString(ACTION, RESTORE_LIST);

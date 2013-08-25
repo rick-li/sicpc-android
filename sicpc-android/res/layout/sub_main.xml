@@ -33,28 +33,36 @@
         </com.sicpc.android.nav.view.CurvedList>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="300dp"
+    <RelativeLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="0dp"
+        android:layout_marginBottom="60dp"
         android:orientation="vertical" >
 
         <ListView
             android:id="@+id/thirdList1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:cacheColorHint="#00000000" >
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:divider="@null"
+            android:cacheColorHint="#00000000" 
+            >
         </ListView>
 
         <ListView
             android:id="@+id/thirdList2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:divider="@null"
             android:cacheColorHint="#00000000"
-            android:visibility="invisible" >
+            android:visibility="invisible"
+            >
         </ListView>
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
