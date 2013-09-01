@@ -9,6 +9,9 @@
     <color name="left_bg">#f0f0f0</color>
     
     
-    <color name="list_test">#d2d2d2</color>
+    <color name="third_container">#b2f7b2</color>
+    <color name="list_test1">#cc0066</color>
+    
+    <color name="list_test2">#ab9a61</color>
     
 </resources>

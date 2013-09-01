@@ -1,17 +1,25 @@
 package com.sicpc.android.actions;
 
-import java.net.URL;
+import android.net.Uri;
+
+import com.sicpc.android.nav.NavNode;
 
 /**
  * 
- * Images will be open in a carousel in the left side. 
- *
+ * Images will be open in a carousel in the left side.
+ * 
  */
 public class ImageAction implements Action {
 
+	private NavNode node;
+
+	public ImageAction(NavNode node) {
+		this.node = node;
+	}
+
 	@Override
-	public void doAction(URL imageFoler) {
-	
+	public void doAction() {
+		
 	}
 
 }

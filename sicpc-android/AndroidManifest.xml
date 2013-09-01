@@ -25,8 +25,8 @@
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
             <intent-filter>
-                
-             	<action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -47,7 +47,7 @@
                 <!--
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
                 -->
             </intent-filter>
 
@@ -77,16 +77,24 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>
         -->
         <activity
             android:name="com.sicpc.android.activities.MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:screenOrientation="landscape" >
             <intent-filter>
-<!--                  <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />  -->
+                <!--
+                      <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                -->
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sicpc.android.actions.video.VideoViewActivity"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

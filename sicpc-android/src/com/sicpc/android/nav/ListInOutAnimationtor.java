@@ -1,7 +1,6 @@
 package com.sicpc.android.nav;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import android.app.Activity;
@@ -10,16 +9,21 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
+import com.google.common.collect.Lists;
 import com.sicpc.android.R;
 
 public class ListInOutAnimationtor {
 	protected final String TAG = this.getClass().getSimpleName();
-	private List<PointF> posList = new ArrayList<PointF>(200);
+	
 	final String VISIBLE_ITEM_POS = "visibleItemPos";
 	final String ACTION = "action";
 	final String REMOVE_LIST = "remove_list";
@@ -28,51 +32,52 @@ public class ListInOutAnimationtor {
 	private ListView invisiList;
 
 	private Activity ctx;
-	ArrayAdapter<String> adaptor1;
-	ArrayAdapter<String> adaptor2;
-
-	public ListInOutAnimationtor(Activity ctx, ListView thirdlist1, ListView thirdlist2, String[] defaultListItems) {
+	ImageAdaptor adaptor1;
+	ImageAdaptor adaptor2;
+	
+	public ListInOutAnimationtor(Activity ctx, ListView thirdlist1, ListView thirdlist2, List<NavNode> defaultListItems) {
 		this.ctx = ctx;
 		visiList = thirdlist1;
 		invisiList = thirdlist2;
 		
-		String[] str1 = defaultListItems;
-		String[] str2 = {};
-		ArrayList<String> ls1 = new ArrayList<String>();
-		ls1.addAll(Arrays.asList(str1));
+		List<NavNode> list1 = defaultListItems;
+		List<NavNode> list2 = Lists.newArrayList();
 		
-		ArrayList<String> ls2 = new ArrayList<String>();
-		ls2.addAll(Arrays.asList(str2));
-		adaptor1 = new ArrayAdapter<String>(ctx, R.layout.listitem, ls1);
-		adaptor2 = new ArrayAdapter<String>(ctx, R.layout.listitem, ls2);
+		
+		adaptor1 = new ImageAdaptor(list1);
+		adaptor2 = new ImageAdaptor(list2);
 
 		visiList.setAdapter(adaptor1);
 		invisiList.setAdapter(adaptor2);
 		
-		//startSlideAnimation2(visiList, invisiList);
+//		visiList.setVisibility(View.VISIBLE);
+//		invisiList.setVisibility(View.VISIBLE);
+		
+//		startSlideAnimation2(visiList, invisiList);
 	}
 
-	public void updateListItems(String[] newListItems) {
-		// invisiList
-		ArrayAdapter<String> arrayAdapter = (ArrayAdapter<String>)invisiList.getAdapter();
-		arrayAdapter.clear();
-		ArrayList<String> newLs = new ArrayList<String>();
-		newLs.addAll(Arrays.asList(newListItems));
-		arrayAdapter.addAll(newLs);
-		
-		arrayAdapter.notifyDataSetChanged();
+	public void updateListItems(List<NavNode> newListItems) {
+				
+		if(invisiList.getVisibility() == View.VISIBLE){
+			//swap visible/invisible;
+			ListView tmplist = invisiList;
+			invisiList = visiList;
+			visiList = tmplist;
+		}
+		invisiList.setAdapter(new ImageAdaptor(newListItems));
+		((ImageAdaptor)invisiList.getAdapter()).notifyDataSetChanged();
+		invisiList.invalidateViews();
+//		Log.d(TAG, "invisible list pos "+invisiList.getLeft());
+//		Log.d(TAG, "visible list pos "+visiList.getLeft());
 //		invisiList.invalidateViews();
+//		invisiList.setVisibility(View.VISIBLE);
+//		invisiList.setX(0);
+//		visiList.setVisibility(View.VISIBLE);
 		startSlideAnimation2(visiList, invisiList);
 	}
 
-	private void startSlideAnimation2(final ListView list1, final ListView list2) {
-		if (list1.getVisibility() == View.INVISIBLE) {
-			visiList = list2;
-			invisiList = list1;
-		} else {
-			visiList = list1;
-			invisiList = list2;
-		}
+	private void startSlideAnimation2(final ListView visiList, final ListView invisiList) {
+
 		new Thread(new Runnable() {
 
 			@Override
@@ -89,10 +94,15 @@ public class ListInOutAnimationtor {
 					msg.setData(data);
 					pushOutHandler.sendMessage(msg);
 					try {
-						Thread.sleep(150);
+						Thread.sleep(300);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+				}
+				try {
+					Thread.sleep(300);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
 				}
 				//remove list itself
 				Message removeMsg = Message.obtain();
@@ -107,7 +117,9 @@ public class ListInOutAnimationtor {
 				restoreListData.putString(ACTION, RESTORE_LIST);
 				restoreMsg.setData(restoreListData);
 				pushInHandler.sendMessage(restoreMsg);
-				for (int i = 0; i < numerOfVisibleItems; i++) {
+//
+				int numerOfinvisibleItems = invisiList.getCount();
+				for (int i = 0; i < numerOfinvisibleItems; i++) {
 					Bundle data = new Bundle();
 					data.putInt(VISIBLE_ITEM_POS, i);
 					Message msg = Message.obtain();
@@ -120,18 +132,19 @@ public class ListInOutAnimationtor {
 					}
 
 				}
-
+				
+			
 			}
 
 		}).start();
 	}
-
+	private List<PointF> posList = new ArrayList<PointF>(200);
 	Handler pushOutHandler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
 			if (REMOVE_LIST.equals(msg.getData().getString(ACTION))) {
-				visiList.setVisibility(View.INVISIBLE);
+//				visiList.setVisibility(View.INVISIBLE);
 				visiList.setX(2000);
 			} else {
 				int idx = msg.getData().getInt(VISIBLE_ITEM_POS);
@@ -154,10 +167,6 @@ public class ListInOutAnimationtor {
 				invisiList.setVisibility(View.VISIBLE);
 				invisiList.setX(0);
 			} else {
-				if (invisiList.getVisibility() == View.INVISIBLE) {
-
-					// invisiList.setVisibility(View.VISIBLE);
-				}
 				int idx = msg.getData().getInt(VISIBLE_ITEM_POS);
 				View aniView = invisiList.getChildAt(idx);
 				if (aniView == null) {
@@ -165,12 +174,50 @@ public class ListInOutAnimationtor {
 					return;
 				}
 				aniView.setVisibility(View.VISIBLE);
-				aniView.setX(posList.get(idx).x);
-				aniView.setY(posList.get(idx).y);
+				aniView.setX(0);
+//				aniView.setY(posList.get(idx).y);
 				aniView.startAnimation(AnimationUtils.loadAnimation(ctx,
 						R.anim.push_left_in));
 			}
 		}
 	};
+	class ImageAdaptor extends BaseAdapter{
+		List<NavNode> navNodes;
+		public ImageAdaptor(List<NavNode> navNodes){
+			this.navNodes = navNodes;
+		}
+		LayoutInflater mInflater = ctx.getLayoutInflater();
 
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+
+			Log.i(TAG, "get view position " + position + " image is " + this.navNodes.get(position).getImage());
+
+			if (convertView == null) {
+				
+				convertView = mInflater.inflate(R.layout.listimageitemleft, null);
+			}
+			((ImageView)((RelativeLayout) convertView).getChildAt(0)).setImageURI(navNodes.get(
+					position).getImage());
+
+			return convertView;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			
+			return position;
+		}
+
+		@Override
+		public Object getItem(int position) {
+			
+			return position;
+		}
+
+		@Override
+		public int getCount() {
+			return this.navNodes.size();
+		}
+	} 
 }

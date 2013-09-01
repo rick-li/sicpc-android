@@ -33,28 +33,6 @@ public class VideoViewActivity extends Activity implements MediaPlayer.OnErrorLi
 	private Dialog dialog;
 	private VideoViewActivity instance = this;
 
-	/**
-	 * 
-	 * Clicking back button can cancel the progrssDialog.
-	 * 
-	 */
-	// @formatter:off
-	/*private class CancellableDialog extends ProgressDialog
-	{
-
-		public CancellableDialog(Context context)
-		{
-			super(context);
-		}
-
-		@Override
-		public void onBackPressed()
-		{
-			super.onBackPressed();
-			instance.onBackPressed();
-		}
-	}*/
-	// @formatter:on
 
 	/*
 	 * (non-Javadoc)
@@ -99,10 +77,7 @@ public class VideoViewActivity extends Activity implements MediaPlayer.OnErrorLi
 			{
 				// mVideoView.setBackgroundColor(Color.argb(0, 0, 255, 0));
 				mVideoView.requestFocus();
-				if (dialog.isShowing())
-				{
-					dialog.dismiss();
-				}
+
 			}
 		});
 		mVideoView.setOnErrorListener(new OnErrorListener()
@@ -150,10 +125,7 @@ public class VideoViewActivity extends Activity implements MediaPlayer.OnErrorLi
 	@Override
 	public void onStop()
 	{
-		if (dialog.isShowing())
-		{
-			dialog.dismiss();
-		}
+
 		super.onStop();
 	}
 
@@ -163,11 +135,11 @@ public class VideoViewActivity extends Activity implements MediaPlayer.OnErrorLi
 		super.onBackPressed();
 
 		Log.d(TAG, "back pressed in video");
-		if (dialog.isShowing())
-		{
-			Log.d(TAG, "dialog is showing...");
-			dialog.dismiss();
-		}
+//		if (dialog.isShowing())
+//		{
+//			Log.d(TAG, "dialog is showing...");
+//			dialog.dismiss();
+//		}
 		this.finish();
 	}
 

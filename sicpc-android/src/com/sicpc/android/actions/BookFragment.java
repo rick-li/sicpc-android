@@ -1,5 +1,8 @@
 package com.sicpc.android.actions;
 
+import java.io.File;
+import java.io.FilenameFilter;
+
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -7,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -17,9 +21,7 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.OnScaleGestureListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.sicpc.android.R;
@@ -30,6 +32,11 @@ import fi.harism.curl.CurlView;
 public class BookFragment extends Fragment {
 	protected static final String TAG = "BookFragment";
 	private CurlView mCurlView;
+	private Uri imageDir;
+
+	public void setImageDir(Uri imageDir) {
+		this.imageDir = imageDir;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +50,7 @@ public class BookFragment extends Fragment {
 		FrameLayout root = (FrameLayout) inflater.inflate(
 				R.layout.image_content, null);
 		mCurlView = (CurlView) root.findViewById(R.id.curlView);
-		mCurlView.setPageProvider(new PageProvider());
+		mCurlView.setPageProvider(new PageProvider(imageDir));
 		mCurlView.setSizeChangedObserver(new SizeChangedObserver());
 		mCurlView.setCurrentIndex(index);
 		mCurlView.setBackgroundColor(Color.TRANSPARENT);
@@ -90,15 +97,27 @@ public class BookFragment extends Fragment {
 	/**
 	 * Bitmap provider.
 	 */
-	private class PageProvider implements CurlView.PageProvider {
+	public static class PageProvider implements CurlView.PageProvider {
+		File[] imageList;
 
-		// Bitmap resources.
-		private int[] mBitmapIds = { R.drawable.obama, R.drawable.road_rage,
-				R.drawable.taipei_101, R.drawable.world };
+		public PageProvider(Uri imageDir) {
+			File imageDirF = new File(imageDir.getPath());
+			Log.i(TAG, "Page Provider dir is " + imageDirF.getAbsolutePath()
+					+ " exists " + imageDirF.exists());
+			imageList = imageDirF.listFiles(new FilenameFilter() {
+
+				@Override
+				public boolean accept(File dir, String filename) {
+
+					return (filename.endsWith("png") || filename
+							.endsWith("jpg"));
+				}
+			});
+		}
 
 		@Override
 		public int getPageCount() {
-			return 4;
+			return imageList.length;
 		}
 
 		private Bitmap loadBitmap(int width, int height, int index) {
@@ -106,7 +125,9 @@ public class BookFragment extends Fragment {
 					Bitmap.Config.ARGB_8888);
 			b.eraseColor(0xFFFFFFFF);
 			Canvas c = new Canvas(b);
-			Drawable d = getResources().getDrawable(mBitmapIds[index]);
+
+			Drawable d = Drawable.createFromPath(imageList[index]
+					.getAbsolutePath());
 
 			int margin = 7;
 			int border = 3;

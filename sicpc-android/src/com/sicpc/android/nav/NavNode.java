@@ -1,8 +1,9 @@
 package com.sicpc.android.nav;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import android.net.Uri;
 
 /**
  * 
@@ -15,15 +16,17 @@ public class NavNode {
 	
 	public enum ActionType {BOOK, IMAGE, VIDEO, FLASH};
 	
+	private String id;
+	
 	private Level level;
 	
 	private String title;
 	
-	private URL image;
+	private Uri image;
 	
 	private ActionType actionType;
 	
-	private URL actionUrl;
+	private Uri actionUri;
 
 	private List<NavNode> children = new ArrayList<NavNode>();
 	
@@ -43,13 +46,7 @@ public class NavNode {
 		this.title = title;
 	}
 
-	public URL getImage() {
-		return image;
-	}
 
-	public void setImage(URL image) {
-		this.image = image;
-	}
 
 	public ActionType getActionType() {
 		return actionType;
@@ -59,12 +56,21 @@ public class NavNode {
 		this.actionType = actionType;
 	}
 
-	public URL getActionUrl() {
-		return actionUrl;
+
+	public Uri getImage() {
+		return image;
 	}
 
-	public void setActionUrl(URL actionUrl) {
-		this.actionUrl = actionUrl;
+	public void setImage(Uri image) {
+		this.image = image;
+	}
+
+	public Uri getActionUri() {
+		return actionUri;
+	}
+
+	public void setActionUri(Uri actionUrl) {
+		this.actionUri = actionUrl;
 	}
 
 	public List<NavNode> getChildren() {
@@ -75,14 +81,19 @@ public class NavNode {
 		this.children = children;
 	}
 
-	@Override
-	public String toString() {
-		return "NavNode [level=" + level + ", title=" + title + ", image="
-				+ image + ", actionType=" + actionType + ", actionUrl="
-				+ actionUrl + "]";
+	public String getId() {
+		return id;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "NavNode [id=" + id + ", level=" + level + ", title=" + title
+				+ ", image=" + image + ", actionType=" + actionType
+				+ ", actionUrl=" + actionUri + ", children=" + children + "]";
+	}
+
 }

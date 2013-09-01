@@ -1,6 +1,5 @@
 package com.sicpc.android.actions;
 
-import java.net.URL;
 
 /**
  * 
@@ -8,5 +7,6 @@ import java.net.URL;
  *
  */
 public interface Action {
-	void doAction(URL url);
+	
+	void doAction();
 }
