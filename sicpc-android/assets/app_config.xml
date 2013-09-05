@@ -6,10 +6,10 @@
 	<nav>
 		<navNode image="" title="孕期教育是关键">
 			<navNode id="shushichuanzhuohufu" image="yunqijiaoyushiguanjian/shushichuanzhuohufu.png" title="舒适穿着勤护肤">
-				<navNode id="" image="yunqijiaoyushiguanjian/zishizhengquebaoankang/baochizhengquedehuodongzishi.jpg" title="保持正确的活动姿势" actionType="video" actionFile="yunqijiaoyushiguanjian/zishizhengquebaoankang/保持正确的活动姿势.mp4"/>
+				
 			</navNode>
 			<navNode id="anquanyinshizhongyinyang" image="yunqijiaoyushiguanjian/anquanyinshizhongyinyang.png" title="安全饮食重营养">
-				<navNode id="" image="yunqijiaoyushiguanjian/zishizhengquebaoankang/yunfushuimianyingzhuyidewenti.jpg" title="孕妇睡眠应该注意的问题" actionType="book" actionFile="yunqijiaoyushiguanjian/zishizhengquebaoankang/孕妇睡眠应该注意的问题"/>
+				
 			</navNode>
 			<navNode id="zishizhengquebaoankang" image="yunqijiaoyushiguanjian/zishizhengquebaoankang.png" title="姿势正确保安康">
 			    <navNode id="" image="yunqijiaoyushiguanjian/zishizhengquebaoankang/baochizhengquedehuodongzishi.jpg" title="保持正确的活动姿势" actionType="video" actionFile="yunqijiaoyushiguanjian/zishizhengquebaoankang/保持正确的活动姿势.mp4"/>
@@ -17,18 +17,21 @@
 				<navNode id="" image="yunqijiaoyushiguanjian/zishizhengquebaoankang/zhuyigezhongzhengquezishi.jpg" title="注意各种正确姿势" actionType="book" actionFile="yunqijiaoyushiguanjian/zishizhengquebaoankang/注意各种正确姿势"/>
 			</navNode>
 			<navNode id="huodongxiuxianpai" image="yunqijiaoyushiguanjian/huodongxiuxianpai.png" title="活动休息细安排">
-				<navNode id="" image="yunqijiaoyushiguanjian/zishizhengquebaoankang/baochizhengquedehuodongzishi.jpg" title="保持正确的活动姿势" actionType="video" actionFile="yunqijiaoyushiguanjian/zishizhengquebaoankang/保持正确的活动姿势.mp4"/>
+				
 			</navNode>
-			<navNode id="yunqiweishengduozhongshi" image="yunqijiaoyushiguanjian/yunqiweishengduozhongshi.png" title="孕期卫生多重视">
-			    <navNode id="" image="yunqijiaoyushiguanjian/zishizhengquebaoankang/baochizhengquedehuodongzishi.jpg" title="保持正确的活动姿势" actionType="video" actionFile="yunqijiaoyushiguanjian/zishizhengquebaoankang/保持正确的活动姿势.mp4"/>
+			<navNode id="yunqiweishengduozhongshi" image="yunqijiaoyushiguanjian/yunqiweishengduozhongshi.png" title="yunqiweishenduozhongshi">
+			    <navNode id="" image="yunqijiaoyushiguanjian/yunqiweishenduozhongshi/宠物家畜应远离.jpg" actionType="book" actionFile="yunqijiaoyushiguanjian/yunqiweishenduozhongshi/宠物家畜应远离"/>
+				<navNode id="" image="yunqijiaoyushiguanjian/yunqiweishenduozhongshi/孕期口腔如何护理.jpg" actionType="book" actionFile="yunqijiaoyushiguanjian/yunqiweishenduozhongshi/孕期口腔如何护理"/>
+				<navNode id="" image="yunqijiaoyushiguanjian/yunqiweishenduozhongshi/乳房保养.jpg" actionType="video" actionFile="yunqijiaoyushiguanjian/yunqiweishenduozhongshi/乳房保养.mp4"/>
+				<navNode id="" image="yunqijiaoyushiguanjian/yunqiweishenduozhongshi/孕期卫生.jpg" actionType="video" actionFile="yunqijiaoyushiguanjian/yunqiweishenduozhongshi/孕期卫生.mp4"/>
 			</navNode>
 			
 			<navNode id="yunfuyongyaojingshen" image="yunqijiaoyushiguanjian/yunfuyongyaojingshen.png" title="孕妇用药须谨慎">
-			    <navNode id="" image="yunqijiaoyushiguanjian/zishizhengquebaoankang/baochizhengquedehuodongzishi.jpg" title="保持正确的活动姿势" actionType="video" actionFile="yunqijiaoyushiguanjian/zishizhengquebaoankang/保持正确的活动姿势.mp4"/>
+			    
 			</navNode>
 			
 			<navNode id="ziwojianhufangyiwai" image="yunqijiaoyushiguanjian/ziwojianhufangyiwai.png" title="自我监护防意外">
-			    <navNode id="" image="yunqijiaoyushiguanjian/zishizhengquebaoankang/baochizhengquedehuodongzishi.jpg" title="保持正确的活动姿势" actionType="video" actionFile="yunqijiaoyushiguanjian/zishizhengquebaoankang/保持正确的活动姿势.mp4"/>
+			    
 			</navNode>
 		</navNode>
 	</nav>

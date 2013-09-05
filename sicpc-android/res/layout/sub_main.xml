@@ -8,27 +8,33 @@
 
     <LinearLayout
         android:id="@+id/leftContent"
-        android:layout_width="500dp"
-        android:layout_height="fill_parent"
+        android:layout_width="665dp"
+        android:layout_height="700dp"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical"
-        android:translationX="-600dp"
+        android:translationX="-800dp"
          >
     </LinearLayout>
-
+	<com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/image_indicator"
+        android:padding="10dip"
+        android:layout_height="wrap_content"
+        android:layout_width="500dp"
+        />
     <LinearLayout
-        android:layout_width="330dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
         android:orientation="vertical" >
 
         <com.sicpc.android.nav.view.CurvedList
             android:id="@+id/secondNavList"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="370dp"
             android:layout_gravity="left"
             android:cacheColorHint="#00000000"
             android:divider="@null"
@@ -39,10 +45,11 @@
 
     <RelativeLayout
         android:layout_width="335dp"
-        android:layout_height="123dp"
+        android:layout_height="180dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="60dp"
+        android:layout_marginRight="115dp"
         
         android:orientation="vertical" >
 
@@ -55,8 +62,6 @@
             android:divider="@null"
             android:dividerHeight="10dp"
             android:cacheColorHint="#00000000"
-            
-            
             >
         </ListView>
 

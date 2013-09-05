@@ -129,8 +129,8 @@ public class BookFragment extends Fragment {
 			Drawable d = Drawable.createFromPath(imageList[index]
 					.getAbsolutePath());
 
-			int margin = 7;
-			int border = 3;
+			int margin = 1;
+			int border = 0;
 			Rect r = new Rect(margin, margin, width - margin, height - margin);
 
 			int imageWidth = r.width() - (border * 2);
