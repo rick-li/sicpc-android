@@ -17,11 +17,14 @@
         android:translationX="-800dp"
          >
     </LinearLayout>
-	<com.viewpagerindicator.CirclePageIndicator
+	<com.viewpagerindicator.CircleCurlIndicator
         android:id="@+id/image_indicator"
         android:padding="10dip"
         android:layout_height="wrap_content"
-        android:layout_width="500dp"
+        android:layout_width="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="30dp"
         />
     <LinearLayout
         android:layout_width="400dp"

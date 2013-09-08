@@ -14,4 +14,10 @@
     
     <color name="list_test2">#ab9a61</color>
     
+    
+    <color name="circle_unselect">#dfdfdf</color>
+    <color name="circle_selected">#c1a1ac</color>
+    <dimen name="circle_radius">3dp</dimen>
+    
+    
 </resources>

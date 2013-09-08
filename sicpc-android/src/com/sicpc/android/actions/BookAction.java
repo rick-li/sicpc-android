@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import com.sicpc.android.R;
 import com.sicpc.android.actions.BookFragment.PageProvider;
 import com.sicpc.android.nav.NavNode;
-import com.viewpagerindicator.CirclePageIndicator;
+import com.viewpagerindicator.CircleCurlIndicator;
 
 import fi.harism.curl.CurlView;
 
@@ -62,23 +62,12 @@ public class BookAction implements Action {
 			bookContainer.setTranslationX(0);
 		}
 
-		CirclePageIndicator indicator = (CirclePageIndicator) ctx
+		//indicator.
+		CircleCurlIndicator indicator = (CircleCurlIndicator) ctx
 				.findViewById(R.id.image_indicator);
-		ViewPager mockPager = new ViewPager(ctx);
-		mockPager.setAdapter(new PagerAdapter() {
-			
-			@Override
-			public boolean isViewFromObject(View arg0, Object arg1) {
-				return false;
-			}
-			
-			@Override
-			public int getCount() {
-				return imageList.length;
-			}
-		});
-		indicator.setViewPager(mockPager);
-
+		
+		indicator.setCurler(curlView);
+		indicator.setCurrentPage(0);
 		View root = ctx.findViewById(R.id.sub_main_root);
 		root.setBackgroundResource(R.drawable.bookaction_bg_red);
 		Log.d(TAG, "After animation. " + bookContainer.getTranslationX());

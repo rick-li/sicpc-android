@@ -24,10 +24,12 @@ import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+
+import com.viewpagerindicator.CircleCurlIndicator;
+import com.viewpagerindicator.Curler;
 
 /**
  * OpenGL ES View.
@@ -35,7 +37,7 @@ import android.view.View;
  * @author harism
  */
 public class CurlView extends GLSurfaceView implements View.OnTouchListener,
-		CurlRenderer.Observer {
+		CurlRenderer.Observer, Curler {
 
 	// Curl state. We are flipping none, left or right page.
 	private static final int CURL_LEFT = 1;
@@ -334,7 +336,6 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 			}
 			curlStarted = false;
 
-			
 			// Then we have to make decisions for the user whether curl is going
 			// to happen from left or right, and on which page.
 
@@ -667,6 +668,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 			mRenderer.addCurlMesh(mPageCurl);
 
 			mCurlState = CURL_RIGHT;
+			updateIndicatorPos(mCurrentIndex+1);
 			break;
 		}
 
@@ -718,9 +720,16 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 			mRenderer.addCurlMesh(mPageCurl);
 
 			mCurlState = CURL_LEFT;
+			updateIndicatorPos(mCurrentIndex-1);
 			break;
 		}
 
+		}
+	}
+
+	private void updateIndicatorPos(int index) {
+		if (curlIndicator != null) {
+			curlIndicator.setCurrentPage(index);
 		}
 	}
 
@@ -808,6 +817,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 		// Ask page provider to fill it up with bitmaps and colors.
 		mPageProvider.updatePage(page, mPageBitmapWidth, mPageBitmapHeight,
 				index);
+
 	}
 
 	/**
@@ -935,6 +945,14 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 
 	public void setScaleFactor(float scaleFactor) {
 		this.scaleFactor = scaleFactor;
+	}
+
+	private CircleCurlIndicator curlIndicator;
+
+	@Override
+	public void setCurlIndicator(CircleCurlIndicator curlIndicator) {
+		this.curlIndicator = curlIndicator;
+		this.curlIndicator.setItemCount(this.mPageProvider.getPageCount());
 	}
 
 }
