@@ -334,10 +334,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 			}
 			curlStarted = false;
 
-			if (!mAllowLastPageCurl
-					&& mCurrentIndex >= mPageProvider.getPageCount() - 1) {
-				return false;
-			}
+			
 			// Then we have to make decisions for the user whether curl is going
 			// to happen from left or right, and on which page.
 
@@ -387,6 +384,10 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 					// Log.d(TAG, "left");
 					// direction is left
 					mDragStartPos.x = rightRect.right;
+					if (!mAllowLastPageCurl
+							&& mCurrentIndex >= mPageProvider.getPageCount() - 1) {
+						return false;
+					}
 					startCurl(CURL_RIGHT);
 					curlStarted = true;
 				}
