@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -22,11 +23,12 @@ import com.sicpc.android.actions.ActionFactory;
 import com.sicpc.android.nav.view.CircularListAdapter;
 import com.sicpc.android.nav.view.CurvedList;
 
-public class SecondNavController {
+public class SecondNavController implements AnimationStateListener {
 	private static final String TAG = "SecondNavController";
 	private FragmentActivity ctx;
 	private LayoutInflater inflator;
 	private int secondListPos = 0;
+	private boolean initiailized = false;
 	private ListInOutAnimationtor thirdListAnimator;
 	private List<NavNode> secondNavNodes = Lists.newArrayList();
 	private List<NavNode> thirdNavNodes = Lists.newArrayList();
@@ -75,13 +77,12 @@ public class SecondNavController {
 					convertView = mInflater.inflate(R.layout.listimageitemmid,
 							null);
 				}
-				Uri imageUri = secondNavNodes.get(
-						position).getImage();
-				
-				Log.i(TAG, "Curve List image is "+imageUri.getPath());
-				
+				Uri imageUri = secondNavNodes.get(position).getImage();
+
+				Log.i(TAG, "Curve List image is " + imageUri.getPath());
+
 				File imageFile = new File(imageUri.getPath());
-				Log.i(TAG, "Curve List image exisits - "+imageFile.exists());
+				Log.i(TAG, "Curve List image exisits - " + imageFile.exists());
 				((ImageView) convertView).setImageURI(secondNavNodes.get(
 						position).getImage());
 
@@ -106,13 +107,28 @@ public class SecondNavController {
 			}
 		}));
 
-		secondNavList.smoothScrollToPositionFromTop(mCount * 2, 0);
+		secondNavList.addOnLayoutChangeListener(new OnLayoutChangeListener() {
+
+			@Override
+			public void onLayoutChange(View v, int left, int top, int right,
+					int bottom, int oldLeft, int oldTop, int oldRight,
+					int oldBottom) {
+				if (!initiailized) {
+					secondNavList.smoothScrollToPositionFromTop(mCount * 2, 0);
+					initiailized = true;
+				}
+			}
+		});
 
 		secondNavList.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				if (animationState) {
+					Log.d(TAG, "Still in the animation state, return.");
+					return;
+				}
 				Log.d(TAG, "Scrolling to position " + position);
 				int secondNavCount = secondNavNodes.size();
 				int realPos = position % mCount;
@@ -125,19 +141,26 @@ public class SecondNavController {
 				secondNavList.smoothScrollToPositionFromTop(position, midPos);
 				NavNode clickedNode = secondNavNodes.get(realPos);
 				thirdNavNodes = clickedNode.getChildren();
-				thirdListAnimator.updateListItems(thirdNavNodes);
+				thirdListAnimator.updateListItems(thirdNavNodes, SecondNavController.this);
 			}
 		});
 
 		List<NavNode> defaultList = secondNavNodes.get(0).getChildren();
 		thirdListAnimator = new ListInOutAnimationtor(ctx, thirdList1,
 				thirdList2, defaultList);
-
+		
 	}
 
 	private void startAction(NavNode navNode) {
 		Action action = ActionFactory.getInstance().getAction(ctx, navNode);
 		action.doAction();
+	}
+
+	private boolean animationState = false;
+
+	@Override
+	public void setState(boolean state) {
+		this.animationState = state;
 	}
 
 }

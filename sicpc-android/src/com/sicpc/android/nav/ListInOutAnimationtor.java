@@ -32,8 +32,11 @@ public class ListInOutAnimationtor {
 	private ListView invisiList;
 
 	private Activity ctx;
-	ImageAdaptor adaptor1;
-	ImageAdaptor adaptor2;
+	private ImageAdaptor adaptor1;
+	private ImageAdaptor adaptor2;
+	
+	private AnimationStateListener animationStateListener;
+	
 	
 	public ListInOutAnimationtor(Activity ctx, ListView thirdlist1, ListView thirdlist2, List<NavNode> defaultListItems) {
 		this.ctx = ctx;
@@ -56,8 +59,9 @@ public class ListInOutAnimationtor {
 //		startSlideAnimation2(visiList, invisiList);
 	}
 
-	public void updateListItems(List<NavNode> newListItems) {
-				
+	public void updateListItems(List<NavNode> newListItems, AnimationStateListener animationStateListener) {
+		this.animationStateListener = animationStateListener;
+		
 		if(invisiList.getVisibility() == View.VISIBLE){
 			//swap visible/invisible;
 			ListView tmplist = invisiList;
@@ -82,6 +86,13 @@ public class ListInOutAnimationtor {
 
 			@Override
 			public void run() {
+				Bundle aniBdlFalse = new Bundle();
+				aniBdlFalse.putBoolean("animation", true);
+				Message aniMsgfalse = Message.obtain();
+				aniMsgfalse.setData(aniBdlFalse);
+				finishedHandler.sendMessage(aniMsgfalse);
+				
+				
 				// push left visible list
 				int numerOfVisibleItems = visiList.getLastVisiblePosition()
 						- visiList.getFirstVisiblePosition() + 1;
@@ -130,10 +141,14 @@ public class ListInOutAnimationtor {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-
 				}
 				
-			
+				Bundle aniBdl = new Bundle();
+				aniBdl.putBoolean("animation", false);
+				Message aniMsg = Message.obtain();
+				aniMsg.setData(aniBdl);
+				finishedHandler.sendMessage(aniMsg);
+				
 			}
 
 		}).start();
@@ -181,6 +196,17 @@ public class ListInOutAnimationtor {
 			}
 		}
 	};
+	
+	Handler finishedHandler = new Handler(){
+
+		@Override
+		public void handleMessage(Message msg) {
+			Log.d(TAG, "Animation finished, set animation state.");
+			animationStateListener.setState(false);
+		}
+		
+	};
+	
 	class ImageAdaptor extends BaseAdapter{
 		List<NavNode> navNodes;
 		public ImageAdaptor(List<NavNode> navNodes){
