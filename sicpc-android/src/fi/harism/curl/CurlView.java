@@ -52,7 +52,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 	public static final int SHOW_TWO_PAGES = 2;
 	private static final String TAG = "CurlView";
 
-	private boolean mAllowLastPageCurl = true;
+	private boolean mAllowLastPageCurl = false;
 
 	private boolean mAnimate = false;
 	private long mAnimationDurationTime = 300;
@@ -94,12 +94,11 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 	private int mViewMode = SHOW_ONE_PAGE;
 
 	private ScaleGestureDetector scaleDetector;
-	
+
 	private GestureDetector doubleTapDetector;
 
 	private boolean isScaling = false;
 
-	
 	public GestureDetector getDoubleTapDetector() {
 		return doubleTapDetector;
 	}
@@ -179,7 +178,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 
 	@Override
 	public void onDrawFrame() {
-		
+
 		// We are not animating.
 		if (mAnimate == false) {
 			return;
@@ -284,7 +283,6 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 	@Override
 	public boolean onTouch(View view, MotionEvent me) {
 		// No dragging during animation at the moment.
-		// TODO: Stop animation on touch event and return to drag mode.
 		if (mAnimate || mPageProvider == null) {
 			return false;
 		}
@@ -336,6 +334,10 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 			}
 			curlStarted = false;
 
+			if (!mAllowLastPageCurl
+					&& mCurrentIndex >= mPageProvider.getPageCount() - 1) {
+				return false;
+			}
 			// Then we have to make decisions for the user whether curl is going
 			// to happen from left or right, and on which page.
 
@@ -656,7 +658,6 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 				mPageRight.reset();
 				mRenderer.addCurlMesh(mPageRight);
 			}
-
 
 			// Add curled page to renderer.
 			mPageCurl.setRect(mRenderer.getPageRect(CurlRenderer.PAGE_RIGHT));
