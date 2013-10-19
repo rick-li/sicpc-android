@@ -107,8 +107,7 @@ public class CurlActivity extends Activity {
 	private class PageProvider implements CurlView.PageProvider {
 
 		// Bitmap resources.
-		private int[] mBitmapIds = { R.drawable.obama, R.drawable.road_rage,
-				R.drawable.taipei_101, R.drawable.world };
+		private int[] mBitmapIds = {};
 
 		@Override
 		public int getPageCount() {

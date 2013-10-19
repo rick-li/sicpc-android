@@ -1,5 +1,6 @@
 package com.sicpc.android.nav;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +12,13 @@ import android.net.Uri;
  * 
  *
  */
-public class NavNode {
+public class NavNode implements Serializable{
+	
+	private static final long serialVersionUID = 7016877932169443445L;
+
 	public enum Level{FIRST, SECOND, THIRD};
 	
-	public enum ActionType {BOOK, IMAGE, VIDEO, FLASH};
+	public enum ActionType {BOOK, IMAGE, VIDEO, TXT};
 	
 	private String id;
 	

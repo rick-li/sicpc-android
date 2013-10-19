@@ -1,76 +1,39 @@
 package com.sicpc.android.actions;
 
 import java.io.File;
-import java.io.FilenameFilter;
 
+import org.coolreader.CoolReader;
+
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 
-import com.sicpc.android.R;
-import com.sicpc.android.actions.BookFragment.PageProvider;
 import com.sicpc.android.nav.NavNode;
-import com.viewpagerindicator.CircleCurlIndicator;
-
-import fi.harism.curl.CurlView;
 
 public class BookAction implements Action {
 
-	private static final String TAG = BookAction.class.getSimpleName();
-	private FragmentActivity ctx;
 	private NavNode node;
 
-	public BookAction(FragmentActivity ctx, NavNode node) {
-		this.ctx = ctx;
+	public BookAction(NavNode node) {
 		this.node = node;
 	}
 
 	@Override
-	public void doAction() {
-
-		LinearLayout bookContainer = (LinearLayout) ctx
-				.findViewById(R.id.leftContent);
-
-		CurlView curlView = (CurlView) ctx.findViewById(R.id.curlView);
-		curlView.setPageProvider(new PageProvider(node.getActionUri()));
-		Uri imageDir = node.getActionUri();
-		File imageDirF = new File(imageDir.getPath());
-		Log.i(TAG, "Page Provider dir is " + imageDirF.getAbsolutePath()
-				+ " exists " + imageDirF.exists());
-		final File[] imageList = imageDirF.listFiles(new FilenameFilter() {
-
-			@Override
-			public boolean accept(File dir, String filename) {
-
-				return (filename.endsWith("png") || filename
-						.endsWith("jpg"));
-			}
-		});
-		
-		
-		if (bookContainer.getTranslationX() < 0) {
-			Log.d(TAG, "Start animation.");
-
-			TranslateAnimation animation = new TranslateAnimation(-600, 0, 0, 0);
-			bookContainer.startAnimation(animation);
-
-			bookContainer.setTranslationX(0);
+	public void doAction(Context activity) {
+		Uri uri = node.getActionUri();
+		String p = uri.getPath();
+		File f = new File(p);
+		if (!f.exists()) {
+			Toast.makeText(activity, "该电子书不存在 " + p, 1000 * 2);
 		}
-
-		//indicator.
-		CircleCurlIndicator indicator = (CircleCurlIndicator) ctx
-				.findViewById(R.id.image_indicator);
 		
-		indicator.setCurler(curlView);
-		indicator.setCurrentPage(0);
-		View root = ctx.findViewById(R.id.sub_main_root);
-		root.setBackgroundResource(R.drawable.bookaction_bg_red);
-		Log.d(TAG, "After animation. " + bookContainer.getTranslationX());
+		Intent i = new Intent();
+		i.setClass(activity, org.coolreader.CoolReader.class);
+		i.setData(Uri.fromFile(f));
+		i.setAction(Intent.ACTION_VIEW);
+		i.putExtra(CoolReader.OPEN_FILE_PARAM, f);
+		activity.startActivity(i);
 	}
 
 }

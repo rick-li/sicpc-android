@@ -1,14 +1,10 @@
 package com.sicpc.android.nav.view;
 
-import com.sicpc.android.R;
-import com.sicpc.android.activities.SubMainActivity;
-
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
 import android.widget.ScrollView;
-import android.widget.TextView;
+
+import com.sicpc.android.activities.SubMainActivity;
 
 public class ScrollContainer extends ScrollView {
 

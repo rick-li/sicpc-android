@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sub_main_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ImageActivity" >
+
+    <LinearLayout
+        android:id="@+id/leftContent"
+        android:layout_width="wrap_content"
+        android:layout_height="700dp"
+        android:orientation="vertical" >
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomCnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.viewpagerindicator.CircleCurlIndicator
+            android:id="@+id/image_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp"
+            android:padding="10dip" />
+    </LinearLayout>
+
+</LinearLayout>

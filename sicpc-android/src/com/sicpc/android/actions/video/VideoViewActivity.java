@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
@@ -31,7 +32,6 @@ public class VideoViewActivity extends Activity implements MediaPlayer.OnErrorLi
 	private int mPositionWhenPaused = -1;
 	private MediaController mMediaController;
 	private Dialog dialog;
-	private VideoViewActivity instance = this;
 
 
 	/*
@@ -50,14 +50,7 @@ public class VideoViewActivity extends Activity implements MediaPlayer.OnErrorLi
 		Intent intent = getIntent();
 		mUri = intent.getData();
 
-//		dialog = MobileUIUtils.showLoadingProgress(this, "", "Loading video...", false, true, new OnBackPressedListener()
-//		{
-//			@Override
-//			public void onBackPressed(DialogInterface dialog)
-//			{
-//				instance.onBackPressed();
-//			}
-//		});
+
 
 		mVideoView = (VideoView) findViewById(R.id.videoview);
 		mMediaController = new MediaController(this);
@@ -75,7 +68,7 @@ public class VideoViewActivity extends Activity implements MediaPlayer.OnErrorLi
 			@Override
 			public void onPrepared(MediaPlayer mp)
 			{
-				// mVideoView.setBackgroundColor(Color.argb(0, 0, 255, 0));
+				mVideoView.setBackgroundColor(Color.argb(0, 0, 255, 0));
 				mVideoView.requestFocus();
 
 			}

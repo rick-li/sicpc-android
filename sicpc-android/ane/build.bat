@@ -1,0 +1,1 @@
+adt -package -target ane Sicpc.ane extension.xml -swc SicpcANE.swc -platform Android-ARM -C android . -platform default -C default .

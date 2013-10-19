@@ -1,0 +1,16 @@
+<extension xmlns="http://ns.adobe.com/air/extension/3.1">
+  <id>com.ssd.ane.androidextensions</id>
+  <versionNumber>0.0.1</versionNumber>
+  <platforms>
+	<platform name="Android-ARM">
+      <applicationDeployment>
+        <nativeLibrary>SicpcANE.jar</nativeLibrary>
+        <initializer>com.sicpc.ane.Extension</initializer>
+        <finalizer>com.sicpc.ane.Extension</finalizer>
+      </applicationDeployment>
+    </platform>
+    <platform name="default">
+    	<applicationDeployment/> 
+    </platform>
+  </platforms>
+</extension>

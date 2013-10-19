@@ -2,6 +2,8 @@ package com.sicpc.android.nav;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Activity;
 import android.graphics.PointF;
@@ -81,17 +83,11 @@ public class ListInOutAnimationtor {
 	}
 
 	private void startSlideAnimation2(final ListView visiList, final ListView invisiList) {
-
+		animationStateListener.setState(true);
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				Bundle aniBdlFalse = new Bundle();
-				aniBdlFalse.putBoolean("animation", true);
-				Message aniMsgfalse = Message.obtain();
-				aniMsgfalse.setData(aniBdlFalse);
-				finishedHandler.sendMessage(aniMsgfalse);
-				
 				
 				// push left visible list
 				int numerOfVisibleItems = visiList.getLastVisiblePosition()
@@ -143,11 +139,19 @@ public class ListInOutAnimationtor {
 					}
 				}
 				
-				Bundle aniBdl = new Bundle();
-				aniBdl.putBoolean("animation", false);
-				Message aniMsg = Message.obtain();
-				aniMsg.setData(aniBdl);
-				finishedHandler.sendMessage(aniMsg);
+				new Timer().schedule(new TimerTask() {
+					
+					@Override
+					public void run() {
+						
+						Bundle aniBdl = new Bundle();
+						aniBdl.putBoolean("animation", false);
+						Message aniMsg = Message.obtain();
+						aniMsg.setData(aniBdl);
+						finishedHandler.sendMessage(aniMsg);
+						
+					}
+				}, 1000);
 				
 			}
 

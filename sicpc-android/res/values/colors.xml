@@ -1,5 +1,7 @@
 <resources>
 
+    <color name="black">#000000</color>
+    
     <color name="border_color">#dedede</color>
     
     <color name="header_color">#f6f6f6</color>
@@ -7,7 +9,7 @@
     
     <color name="section_color">#f0f0f0</color>
     <color name="left_bg">#f0f0f0</color>
-    
+    <color name="blue">#838B8B</color>
     
     <color name="third_container">#b2f7b2</color>
     <color name="list_test1">#cc0066</color>

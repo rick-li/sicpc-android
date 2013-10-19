@@ -625,7 +625,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 	 * pages in landscape
 	 */
 	private void startCurl(int page) {
-		Log.i(TAG, "Starting curl.");
+		
 
 		switch (page) {
 
@@ -633,6 +633,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 		// curled page. And if there are more bitmaps available new bitmap is
 		// loaded into right side mesh.
 		case CURL_RIGHT: {
+			Log.i(TAG, "Starting curl right.");
 			// Remove meshes from renderer.
 			mRenderer.removeCurlMesh(mPageLeft);
 			mRenderer.removeCurlMesh(mPageRight);
@@ -676,6 +677,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 		// there are more bitmaps available before currentIndex, new bitmap
 		// is loaded into left page.
 		case CURL_LEFT: {
+			Log.i(TAG, "Starting curl left.");
 			// Remove meshes from renderer.
 			mRenderer.removeCurlMesh(mPageLeft);
 			mRenderer.removeCurlMesh(mPageRight);

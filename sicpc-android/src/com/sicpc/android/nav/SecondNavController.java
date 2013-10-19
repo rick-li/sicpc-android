@@ -125,6 +125,7 @@ public class SecondNavController implements AnimationStateListener {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				Log.d(TAG, "Animation state is " + animationState);
 				if (animationState) {
 					Log.d(TAG, "Still in the animation state, return.");
 					return;
@@ -141,25 +142,27 @@ public class SecondNavController implements AnimationStateListener {
 				secondNavList.smoothScrollToPositionFromTop(position, midPos);
 				NavNode clickedNode = secondNavNodes.get(realPos);
 				thirdNavNodes = clickedNode.getChildren();
-				thirdListAnimator.updateListItems(thirdNavNodes, SecondNavController.this);
+				thirdListAnimator.updateListItems(thirdNavNodes,
+						SecondNavController.this);
 			}
 		});
 
 		List<NavNode> defaultList = secondNavNodes.get(0).getChildren();
 		thirdListAnimator = new ListInOutAnimationtor(ctx, thirdList1,
 				thirdList2, defaultList);
-		
+
 	}
 
 	private void startAction(NavNode navNode) {
 		Action action = ActionFactory.getInstance().getAction(ctx, navNode);
-		action.doAction();
+		action.doAction(ctx);
 	}
 
 	private boolean animationState = false;
 
 	@Override
 	public void setState(boolean state) {
+		Log.d(TAG, "Anumation state change: " + state);
 		this.animationState = state;
 	}
 

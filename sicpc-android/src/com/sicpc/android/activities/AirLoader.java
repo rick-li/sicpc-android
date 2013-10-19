@@ -1,14 +1,19 @@
 package com.sicpc.android.activities;
 
-import air.tt.AppEntry;
+import air.ceshi0922.AppEntry;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
+/**
+ * 
+ * Load adobe air flash swf, handle back and finish action.
+ *
+ */
 public class AirLoader extends AppEntry {
 
 	@Override
-	public void onCreate(Bundle test2233) {
-		super.onCreate(test2233);
+	public void onCreate(Bundle bundle) {
+		super.onCreate(bundle);
 	}
 	
 	@Override
