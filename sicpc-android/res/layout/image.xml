@@ -4,29 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/black"
     tools:context=".ImageActivity" >
 
-    <LinearLayout
-        android:id="@+id/leftContent"
-        android:layout_width="wrap_content"
-        android:layout_height="700dp"
-        android:orientation="vertical" >
-        
-    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <LinearLayout
-        android:id="@+id/bottomCnt"
-        android:layout_width="wrap_content"
+    <com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/image_indicator"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <com.viewpagerindicator.CircleCurlIndicator
-            android:id="@+id/image_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="20dp"
-            android:padding="10dip" />
-    </LinearLayout>
+        android:padding="10dip" />
 
 </LinearLayout>

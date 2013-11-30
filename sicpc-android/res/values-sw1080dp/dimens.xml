@@ -1,32 +1,29 @@
 <resources>
 
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16px</dimen>
-    <dimen name="activity_vertical_margin">16px</dimen>
-    
-   	<dimen name="main_icon_gap">30px</dimen>
+	<dimen name="main_icon_gap">30px</dimen>
 	<dimen name="main_icon_right">10px</dimen>
+	
+	<dimen name="main_yunqi_w">300px</dimen>
+    <dimen name="main_yunqi_h">300px</dimen>
     
-    <dimen name="main_yunqi_w">200px</dimen>
-    <dimen name="main_yunqi_h">200px</dimen>
+    <dimen name="main_xinhun_w">225px</dimen>
+    <dimen name="main_xinhun_h">225px</dimen>
     
-    <dimen name="main_xinhun_w">150px</dimen>
-    <dimen name="main_xinhun_h">150px</dimen>
+    <dimen name="main_qingchun_w">270px</dimen>
+    <dimen name="main_qingchun_h">270px</dimen>
     
-    <dimen name="main_qingchun_w">180px</dimen>
-    <dimen name="main_qingchun_h">180px</dimen>
+    <dimen name="main_gengnian_w">240px</dimen>
+    <dimen name="main_gengnian_h">240px</dimen>
     
-    <dimen name="main_gengnian_w">160px</dimen>
-    <dimen name="main_gengnian_h">160px</dimen>
+    <dimen name="main_shengyuhou_w">300px</dimen>
+    <dimen name="main_shengyuhou_h">300px</dimen>
     
-    <dimen name="main_shengyuhou_w">200px</dimen>
-    <dimen name="main_shengyuhou_h">200px</dimen>
+    <dimen name="main_jisheng_w">300px</dimen>
+    <dimen name="main_jisheng_h">300px</dimen>
     
-    <dimen name="main_jisheng_w">200px</dimen>
-    <dimen name="main_jisheng_h">200px</dimen>
+    <dimen name="main_laonian_w">185px</dimen>
+    <dimen name="main_laonian_h">185px</dimen>
     
-    <dimen name="main_laonian_w">130px</dimen>
-    <dimen name="main_laonian_h">130px</dimen>
     
     <!-- Sub Main -->
     <dimen name="submain_left_w">665px</dimen>
@@ -53,5 +50,5 @@
     <dimen name="submain_thirdlist_wrapper_margin_r">115px</dimen>
     
     <dimen name="submain_thirdlist_divider_h">10px</dimen>
-
+    
 </resources>
