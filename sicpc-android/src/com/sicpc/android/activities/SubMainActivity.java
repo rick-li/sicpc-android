@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 
 import com.google.common.io.Files;
@@ -22,7 +23,7 @@ import com.sicpc.android.nav.SecondNavController;
 public class SubMainActivity extends RoboFragmentActivity {
 
 	private static final String TAG = "SubMainActivity";
-
+	
 	@Inject
 	AppConfig appConfig;
 	private SecondNavController navController;
@@ -35,6 +36,7 @@ public class SubMainActivity extends RoboFragmentActivity {
 ////			runBookAction = extras.getBoolean(ImageAction.BOOK_ACTION_KEY);
 //			Log.d(TAG, "Book action found");
 //		}
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sub_main);
 

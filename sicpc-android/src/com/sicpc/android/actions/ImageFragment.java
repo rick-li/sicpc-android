@@ -2,6 +2,7 @@ package com.sicpc.android.actions;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.Arrays;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -110,7 +111,7 @@ public class ImageFragment extends Fragment {
 			Log.i(TAG, "Page Provider dir is " + imageDirF.getAbsolutePath()
 					+ " exists " + imageDirF.exists());
 			imageList = imageDirF.listFiles(new FilenameFilter() {
-
+				
 				@Override
 				public boolean accept(File dir, String filename) {
 
@@ -121,6 +122,7 @@ public class ImageFragment extends Fragment {
 					return false;
 				}
 			});
+			Arrays.sort(imageList);
 		}
 
 		@Override

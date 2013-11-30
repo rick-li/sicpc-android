@@ -20,7 +20,6 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.google.common.collect.Lists;
-import com.google.common.io.Files;
 import com.google.inject.Provider;
 import com.sicpc.android.nav.NavNode;
 import com.sicpc.android.nav.NavNode.ActionType;
@@ -152,7 +151,14 @@ public class AppConfigProvider implements Provider<AppConfig> {
 									+ actionFile.getAbsolutePath());
 				}
 			}
-
+			
+			Node defaultNode = navRoot.getAttributes()
+					.getNamedItem("default");
+			if(defaultNode != null){
+				boolean isDefault = Boolean.parseBoolean(defaultNode.getNodeValue());
+				navNode.setDefault(isDefault);
+			}
+			
 			// navNode.setLevel(NavNode.Level.valueOf(navRoot.getAttributes().getNamedItem("title").getNodeValue()));
 			NodeList childNodes = navRoot.getChildNodes();
 			for (int i = 0; i < childNodes.getLength(); i++) {

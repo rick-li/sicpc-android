@@ -3,13 +3,17 @@ package com.sicpc.android.nav;
 import java.io.File;
 import java.util.List;
 
+import android.content.Context;
+import android.graphics.Point;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -46,7 +50,7 @@ public class SecondNavController implements AnimationStateListener {
 		bindThirdNavEvent(thirdList2);
 
 	}
-
+	
 	private void bindThirdNavEvent(ListView thirdlist) {
 		thirdlist.setOnItemClickListener(new OnItemClickListener() {
 
@@ -85,7 +89,6 @@ public class SecondNavController implements AnimationStateListener {
 				Log.i(TAG, "Curve List image exisits - " + imageFile.exists());
 				((ImageView) convertView).setImageURI(secondNavNodes.get(
 						position).getImage());
-
 				return convertView;
 			}
 
@@ -114,7 +117,23 @@ public class SecondNavController implements AnimationStateListener {
 					int bottom, int oldLeft, int oldTop, int oldRight,
 					int oldBottom) {
 				if (!initiailized) {
-					secondNavList.smoothScrollToPositionFromTop(mCount * 2, 0);
+					
+					WindowManager wm = (WindowManager) ctx.getSystemService(Context.WINDOW_SERVICE);
+					Display display = wm.getDefaultDisplay();
+					Point p = new Point();
+					display.getSize(p);
+					Log.i(TAG, "width "+p.x+ " height "+ p.y);
+					if(p.y == 752){
+						//10 inch asus
+						secondNavList.smoothScrollToPositionFromTop(mCount * 2, 0);
+					}else if (p.y==736){
+						//7 inch
+						secondNavList.smoothScrollToPositionFromTop(mCount *2, 50);
+					}else{
+						secondNavList.smoothScrollToPositionFromTop(mCount * 2, 0);
+					}
+					
+					
 					initiailized = true;
 				}
 			}
@@ -147,9 +166,20 @@ public class SecondNavController implements AnimationStateListener {
 			}
 		});
 
-		List<NavNode> defaultList = secondNavNodes.get(0).getChildren();
+		NavNode defaultNode = null;
+		for (NavNode node : secondNavNodes) {
+			if (node.isDefault()) {
+				defaultNode = node;
+				break;
+			}
+		}
+		if (defaultNode == null) {
+			defaultNode = secondNavNodes.get(0);
+		}
+		List<NavNode> defaultThirdList = defaultNode.getChildren();
+		this.thirdNavNodes = defaultThirdList;
 		thirdListAnimator = new ListInOutAnimationtor(ctx, thirdList1,
-				thirdList2, defaultList);
+				thirdList2, defaultThirdList);
 
 	}
 

@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/main_yunqi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/main_yunqi_w"
+        android:layout_height="@dimen/main_yunqi_h"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="@dimen/main_icon_right"
@@ -18,16 +18,16 @@
 
     <ImageView
         android:id="@+id/main_xinhun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/main_xinhun_w"
+        android:layout_height="@dimen/main_xinhun_h"
         android:layout_marginTop="@dimen/main_icon_gap"
         android:layout_toLeftOf="@id/main_yunqi"
         android:src="@drawable/main_xinhun" />
 
     <ImageView
         android:id="@+id/main_qingchun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/main_qingchun_w"
+        android:layout_height="@dimen/main_qingchun_h"
         android:layout_marginTop="@dimen/main_icon_gap"
         android:layout_toLeftOf="@id/main_xinhun"
         android:src="@drawable/main_qingchunqi" />
@@ -36,8 +36,8 @@
         android:id="@+id/main_gengnian"
         android:layout_marginTop="@dimen/main_icon_gap"
         android:layout_marginRight="@dimen/main_icon_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/main_gengnian_w"
+        android:layout_height="@dimen/main_gengnian_h"
         android:layout_alignParentRight="true"
         android:layout_below="@id/main_yunqi"
         android:src="@drawable/main_gengnian" />
@@ -45,8 +45,8 @@
     <ImageView
         android:id="@+id/main_shengyuhou"
         android:layout_marginTop="@dimen/main_icon_gap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/main_shengyuhou_w"
+        android:layout_height="@dimen/main_shengyuhou_h"
         android:layout_below="@id/main_yunqi"
         android:layout_toLeftOf="@id/main_gengnian"
         android:src="@drawable/main_shengyuhou" />
@@ -55,17 +55,16 @@
         android:id="@+id/main_jisheng"
         android:layout_marginTop="@dimen/main_icon_gap"
         android:layout_marginRight="@dimen/main_icon_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/main_jisheng_w"
+        android:layout_height="@dimen/main_jisheng_h"
         android:layout_alignParentRight="true"
         android:layout_below="@id/main_gengnian"
         android:src="@drawable/main_jisheng" />
 
     <ImageView
         android:id="@+id/main_laonian"
-        android:layout_marginTop="@dimen/main_icon_gap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/main_laonian_w"
+        android:layout_height="@dimen/main_laonian_h"
         android:layout_toLeftOf="@id/main_jisheng"
         android:layout_below="@id/main_shengyuhou"
         android:src="@drawable/main_laonian" />

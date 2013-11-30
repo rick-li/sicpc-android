@@ -7,6 +7,57 @@
     -->
     <!-- <dimen name="activity_horizontal_margin">128dp</dimen> -->
     <dimen name="main_icon_gap">30dp</dimen>
+    <dimen name="main_icon_right">10px</dimen>
     <dimen name="activity_horizontal_margin">128dp</dimen>
+    
+ 
+    <dimen name="main_yunqi_w">200px</dimen>
+    <dimen name="main_yunqi_h">200px</dimen>
+    
+    <dimen name="main_xinhun_w">150px</dimen>
+    <dimen name="main_xinhun_h">150px</dimen>
+    
+    <dimen name="main_qingchun_w">180px</dimen>
+    <dimen name="main_qingchun_h">180px</dimen>
+    
+    <dimen name="main_gengnian_w">160px</dimen>
+    <dimen name="main_gengnian_h">160px</dimen>
+    
+    <dimen name="main_shengyuhou_w">200px</dimen>
+    <dimen name="main_shengyuhou_h">200px</dimen>
+    
+    <dimen name="main_jisheng_w">200px</dimen>
+    <dimen name="main_jisheng_h">200px</dimen>
+    
+    <dimen name="main_laonian_w">130px</dimen>
+    <dimen name="main_laonian_h">130px</dimen>
+    
+    <!-- Sub Main -->
+    <dimen name="submain_left_w">665px</dimen>
+    <dimen name="submain_left_h">700px</dimen>
+    
+    <dimen name="submain_margin_t">20px</dimen>
+    <dimen name="submain_margin_b">50px</dimen>
+    
+    <dimen name="submain_image_indicator_padding">10px</dimen>
+    <dimen name="submain_image_indicator_w">200px</dimen>
+    <dimen name="submain_image_indicator_margin_b">30px</dimen>
+    
+    <dimen name="submain_curve_wrapper_w">400px</dimen>
+    <dimen name="submain_curve_wrapper_margin_t">50px</dimen>
+    <dimen name="submain_curve_wrapper_margin_r">30px</dimen>
+
+    <dimen name="submain_curve_h">370px</dimen>
+    <dimen name="submain_curve_divider_h">10px</dimen>
+
+    <dimen name="submain_thirdlist_wrapper_w">335px</dimen>
+    <dimen name="submain_thirdlist_wrapper_h">180px</dimen>
+    
+    <dimen name="submain_thirdlist_wrapper_margin_b">60px</dimen>
+    <dimen name="submain_thirdlist_wrapper_margin_r">115px</dimen>
+    
+    <dimen name="submain_thirdlist_divider_h">10px</dimen>
+    
+    
 
 </resources>

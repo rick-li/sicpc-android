@@ -31,6 +31,8 @@ public class NavNode implements Serializable{
 	private ActionType actionType;
 	
 	private Uri actionUri;
+	
+	private boolean isDefault = false;
 
 	private List<NavNode> children = new ArrayList<NavNode>();
 	
@@ -93,11 +95,22 @@ public class NavNode implements Serializable{
 		this.id = id;
 	}
 
+	public boolean isDefault() {
+		return isDefault;
+	}
+
+	public void setDefault(boolean isDefault) {
+		this.isDefault = isDefault;
+	}
+
 	@Override
 	public String toString() {
 		return "NavNode [id=" + id + ", level=" + level + ", title=" + title
 				+ ", image=" + image + ", actionType=" + actionType
-				+ ", actionUrl=" + actionUri + ", children=" + children + "]";
+				+ ", actionUri=" + actionUri + ", isDefault=" + isDefault
+				+ ", children=" + children + "]";
 	}
+
+	
 
 }
