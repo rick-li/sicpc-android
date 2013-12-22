@@ -26,28 +26,28 @@
     
     
     <!-- Sub Main -->
-    <dimen name="submain_left_w">665px</dimen>
-    <dimen name="submain_left_h">700px</dimen>
+    <dimen name="submain_left_w">1000px</dimen>
+    <dimen name="submain_left_h">950px</dimen>
     
-    <dimen name="submain_margin_t">20px</dimen>
+    <dimen name="submain_margin_t">10px</dimen>
     <dimen name="submain_margin_b">50px</dimen>
     
-    <dimen name="submain_image_indicator_padding">10px</dimen>
-    <dimen name="submain_image_indicator_w">200px</dimen>
+    <dimen name="submain_image_indicator_padding">15px</dimen>
+    <dimen name="submain_image_indicator_w">300px</dimen>
     <dimen name="submain_image_indicator_margin_b">30px</dimen>
     
-    <dimen name="submain_curve_wrapper_w">400px</dimen>
+    <dimen name="submain_curve_wrapper_w">650px</dimen>
     <dimen name="submain_curve_wrapper_margin_t">50px</dimen>
-    <dimen name="submain_curve_wrapper_margin_r">30px</dimen>
+    <dimen name="submain_curve_wrapper_margin_r">15px</dimen>
 
-    <dimen name="submain_curve_h">370px</dimen>
+    <dimen name="submain_curve_h">570px</dimen>
     <dimen name="submain_curve_divider_h">10px</dimen>
 
     <dimen name="submain_thirdlist_wrapper_w">335px</dimen>
     <dimen name="submain_thirdlist_wrapper_h">180px</dimen>
     
-    <dimen name="submain_thirdlist_wrapper_margin_b">60px</dimen>
-    <dimen name="submain_thirdlist_wrapper_margin_r">115px</dimen>
+    <dimen name="submain_thirdlist_wrapper_margin_b">125px</dimen>
+    <dimen name="submain_thirdlist_wrapper_margin_r">340px</dimen>
     
     <dimen name="submain_thirdlist_divider_h">10px</dimen>
     

@@ -11,11 +11,11 @@
         android:layout_width="@dimen/submain_left_w"
         android:layout_height="@dimen/submain_left_h"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="@dimen/submain_margin_t"
-        android:layout_marginBottom="@dimen/submain_margin_b"
         android:orientation="vertical"
-        android:translationX="-800dp"
-         >
+        android:translationX="-1580dp" >
+
     </LinearLayout>
 	<com.viewpagerindicator.CircleCurlIndicator
         android:id="@+id/image_indicator"
@@ -74,15 +74,14 @@
             android:id="@+id/thirdList2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:dividerHeight="@dimen/submain_thirdlist_divider_h"
-            android:divider="@null"
+            android:layout_alignParentTop="true"
             android:cacheColorHint="#00000000"
-            android:visibility="invisible"
-            
-            >
+            android:divider="@null"
+            android:dividerHeight="@dimen/submain_thirdlist_divider_h"
+            android:visibility="invisible" >
         </ListView>
+
     </RelativeLayout>
 
 </RelativeLayout>

@@ -26,12 +26,12 @@
 		<link>
 			<name>gen</name>
 			<type>2</type>
-			<location>C:/Documents and Settings/kl68884/My Documents/GitHub/sicpc-android/gen</location>
+			<location>/Users/rickli/Documents/eclipse-jee/Eclipse.app/Contents/MacOS/C::/Documents and Settings/kl68884/My Documents/GitHub/sicpc-android/gen</location>
 		</link>
 		<link>
 			<name>src</name>
 			<type>2</type>
-			<location>C:/Documents and Settings/kl68884/My Documents/GitHub/sicpc-android/src</location>
+			<location>/Users/rickli/Documents/eclipse-jee/Eclipse.app/Contents/MacOS/C::/Documents and Settings/kl68884/My Documents/GitHub/sicpc-android/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -32,10 +32,10 @@
     
     <!-- Sub Main -->
     <dimen name="submain_left_w">665px</dimen>
-    <dimen name="submain_left_h">700px</dimen>
+    <dimen name="submain_left_h">650px</dimen>
     
-    <dimen name="submain_margin_t">20px</dimen>
-    <dimen name="submain_margin_b">50px</dimen>
+    <dimen name="submain_margin_t">10px</dimen>
+    <dimen name="submain_margin_b">30px</dimen>
     
     <dimen name="submain_image_indicator_padding">10px</dimen>
     <dimen name="submain_image_indicator_w">200px</dimen>

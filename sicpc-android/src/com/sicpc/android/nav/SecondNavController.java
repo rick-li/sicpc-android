@@ -89,6 +89,7 @@ public class SecondNavController implements AnimationStateListener {
 				Log.i(TAG, "Curve List image exisits - " + imageFile.exists());
 				((ImageView) convertView).setImageURI(secondNavNodes.get(
 						position).getImage());
+				
 				return convertView;
 			}
 
@@ -130,7 +131,7 @@ public class SecondNavController implements AnimationStateListener {
 						//7 inch
 						secondNavList.smoothScrollToPositionFromTop(mCount *2, 50);
 					}else{
-						secondNavList.smoothScrollToPositionFromTop(mCount * 2, 0);
+						secondNavList.smoothScrollToPositionFromTop(mCount * 2, 67);
 					}
 					
 					

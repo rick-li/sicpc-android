@@ -64,7 +64,7 @@
                 android:value="75845c4c-4ffa-4732-8d45-668ebe494e86" />
             <meta-data
                 android:name="initialcontent"
-                android:value="ceshi0922.swf" />
+                android:value="js1129.swf" />
         </activity>
 
         <!--
