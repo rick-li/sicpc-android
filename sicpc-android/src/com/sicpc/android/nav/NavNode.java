@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.w3c.dom.Node;
+
 import android.net.Uri;
 
 /**
@@ -19,6 +21,8 @@ public class NavNode implements Serializable{
 	public enum Level{FIRST, SECOND, THIRD};
 	
 	public enum ActionType {BOOK, IMAGE, VIDEO, TXT};
+	
+	private Node node;
 	
 	private String id;
 	
@@ -101,6 +105,14 @@ public class NavNode implements Serializable{
 
 	public void setDefault(boolean isDefault) {
 		this.isDefault = isDefault;
+	}
+	
+	public Node getNode() {
+		return node;
+	}
+
+	public void setNode(Node node) {
+		this.node = node;
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class PlayVideoFunction implements FREFunction {
 		}
 		Log.i(TAG, "ID is : " + actionId);
 		Action action = ActionFactory.getInstance().getAction(ctx,
-				appCfg.searchNodeById(ctx, actionId));
+				appCfg.searchNodeById(ctx, actionId), null);
 		action.doAction(context.getActivity());
 		return null;
 	}

@@ -34,6 +34,7 @@ public class AppConfigProvider implements Provider<AppConfig> {
 	private static String TAG = "AppConfigParser";
 	private AppConfig cfg;
 	private InputStream configXmlIs;
+	private String rootPath = "";
 
 	@Inject
 	private Context context;
@@ -45,7 +46,9 @@ public class AppConfigProvider implements Provider<AppConfig> {
 		if (configXmlIs == null) {
 
 			File storageDir = Environment.getExternalStorageDirectory();
-			String appConfigXml = storageDir + "/sicpc/app_config.xml";
+
+			rootPath = storageDir + "/sicpc";
+			String appConfigXml = rootPath + "/app_config.xml";
 			File file = new File(appConfigXml);
 			if (!file.exists()) {
 				// throw new IllegalStateException(
@@ -102,7 +105,7 @@ public class AppConfigProvider implements Provider<AppConfig> {
 	private NavNode parseNavNode(Node navRoot) {
 		NavNode navNode = new NavNode();
 		try {
-
+			navNode.setNode(navRoot);
 			Node idNode = navRoot.getAttributes().getNamedItem("id");
 			if (idNode != null) {
 				navNode.setId(idNode.getNodeValue());
@@ -126,6 +129,7 @@ public class AppConfigProvider implements Provider<AppConfig> {
 				}
 				navNode.setImage(Uri.fromFile(imgFile));
 			}
+
 			Node actionTypeNode = navRoot.getAttributes().getNamedItem(
 					"actionType");
 			if (actionTypeNode != null) {
@@ -151,14 +155,14 @@ public class AppConfigProvider implements Provider<AppConfig> {
 									+ actionFile.getAbsolutePath());
 				}
 			}
-			
-			Node defaultNode = navRoot.getAttributes()
-					.getNamedItem("default");
-			if(defaultNode != null){
-				boolean isDefault = Boolean.parseBoolean(defaultNode.getNodeValue());
+
+			Node defaultNode = navRoot.getAttributes().getNamedItem("default");
+			if (defaultNode != null) {
+				boolean isDefault = Boolean.parseBoolean(defaultNode
+						.getNodeValue());
 				navNode.setDefault(isDefault);
 			}
-			
+
 			// navNode.setLevel(NavNode.Level.valueOf(navRoot.getAttributes().getNamedItem("title").getNodeValue()));
 			NodeList childNodes = navRoot.getChildNodes();
 			for (int i = 0; i < childNodes.getLength(); i++) {

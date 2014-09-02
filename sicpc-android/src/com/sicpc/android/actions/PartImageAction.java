@@ -1,6 +1,7 @@
 package com.sicpc.android.actions;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
@@ -18,9 +19,11 @@ public class PartImageAction implements Action {
 
 	private static final String TAG = "PartImageAction";
 	private NavNode node;
-
-	public PartImageAction(NavNode node) {
+	private String bgPath;
+	
+	public PartImageAction(NavNode node, String bgPath) {
 		this.node = node;
+		this.bgPath = bgPath;
 	}
 
 	@Override
@@ -48,7 +51,7 @@ public class PartImageAction implements Action {
 		indicator.setCurler(bookView);
 		indicator.setCurrentPage(0);
 		View root = subActivity.findViewById(R.id.sub_main_root);
-		root.setBackgroundResource(R.drawable.bookaction_bg_red);
+		root.setBackgroundDrawable(Drawable.createFromPath(bgPath));
 
 	}
 

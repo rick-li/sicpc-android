@@ -52,6 +52,7 @@ public class MainActivity extends RoboActivity {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent();
+				i.putExtra(SubMainActivity.CONTENT_ID, "yunqijiaoyushiguanjian");
 				i.setClass(MainActivity.this, SubMainActivity.class);
 				MainActivity.this.startActivity(i);
 			}

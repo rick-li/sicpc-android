@@ -39,8 +39,8 @@ public class SecondNavController implements AnimationStateListener {
 
 	private ListView thirdList1;
 	private ListView thirdList2;
-
-	public SecondNavController(FragmentActivity ctx) {
+	private String bookBgPath;
+	public SecondNavController(FragmentActivity ctx, String bookBgPath) {
 		this.ctx = ctx;
 		inflator = LayoutInflater.from(ctx);
 
@@ -48,7 +48,7 @@ public class SecondNavController implements AnimationStateListener {
 		thirdList2 = (ListView) ctx.findViewById(R.id.thirdList2);
 		bindThirdNavEvent(thirdList1);
 		bindThirdNavEvent(thirdList2);
-
+		this.bookBgPath = bookBgPath;
 	}
 	
 	private void bindThirdNavEvent(ListView thirdlist) {
@@ -185,7 +185,7 @@ public class SecondNavController implements AnimationStateListener {
 	}
 
 	private void startAction(NavNode navNode) {
-		Action action = ActionFactory.getInstance().getAction(ctx, navNode);
+		Action action = ActionFactory.getInstance().getAction(ctx, navNode, bookBgPath);
 		action.doAction(ctx);
 	}
 

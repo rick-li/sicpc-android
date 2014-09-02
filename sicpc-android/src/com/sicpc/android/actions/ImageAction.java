@@ -18,9 +18,12 @@ public class ImageAction implements Action {
 	public static final String BOOK_ACTION_KEY = "book_url_key";
 
 	private NavNode node;
+	
+	String bgPath;
 
-	public ImageAction(NavNode node) {
+	public ImageAction(NavNode node, String bgPath) {
 		this.node = node;
+		this.bgPath = bgPath;
 	}
 
 	@Override
