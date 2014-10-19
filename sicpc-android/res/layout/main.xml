@@ -33,14 +33,14 @@
         android:src="@drawable/main_qingchunqi" />
 
     <ImageView
-        android:id="@+id/main_gengnian"
+        android:id="@+id/main_laonian"
         android:layout_marginTop="@dimen/main_icon_gap"
         android:layout_marginRight="@dimen/main_icon_right"
         android:layout_width="@dimen/main_gengnian_w"
         android:layout_height="@dimen/main_gengnian_h"
         android:layout_alignParentRight="true"
         android:layout_below="@id/main_yunqi"
-        android:src="@drawable/main_gengnian" />
+        android:src="@drawable/main_laonian" />
 
     <ImageView
         android:id="@+id/main_shengyuhou"
@@ -48,7 +48,7 @@
         android:layout_width="@dimen/main_shengyuhou_w"
         android:layout_height="@dimen/main_shengyuhou_h"
         android:layout_below="@id/main_yunqi"
-        android:layout_toLeftOf="@id/main_gengnian"
+        android:layout_toLeftOf="@id/main_laonian"
         android:src="@drawable/main_shengyuhou" />
 
     <ImageView
@@ -58,15 +58,9 @@
         android:layout_width="@dimen/main_jisheng_w"
         android:layout_height="@dimen/main_jisheng_h"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/main_gengnian"
+        android:layout_below="@id/main_laonian"
         android:src="@drawable/main_jisheng" />
 
-    <ImageView
-        android:id="@+id/main_laonian"
-        android:layout_width="@dimen/main_laonian_w"
-        android:layout_height="@dimen/main_laonian_h"
-        android:layout_toLeftOf="@id/main_jisheng"
-        android:layout_below="@id/main_shengyuhou"
-        android:src="@drawable/main_laonian" />
+
 
 </RelativeLayout>

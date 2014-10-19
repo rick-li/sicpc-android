@@ -46,6 +46,7 @@ public class SubMainActivity extends RoboFragmentActivity {
 			if(contentId.equals(n.getId())){
 				contentNode = n;
 			}
+			
 		}
 		
 		setContentView(R.layout.sub_main);

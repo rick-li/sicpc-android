@@ -27,8 +27,8 @@
     <dimen name="main_jisheng_w">200px</dimen>
     <dimen name="main_jisheng_h">200px</dimen>
     
-    <dimen name="main_laonian_w">130px</dimen>
-    <dimen name="main_laonian_h">130px</dimen>
+    <dimen name="main_laonian_w">200px</dimen>
+    <dimen name="main_laonian_h">200px</dimen>
     
     <!-- Sub Main -->
     <dimen name="submain_left_w">665px</dimen>
