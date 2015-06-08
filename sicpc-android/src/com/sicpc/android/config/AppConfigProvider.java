@@ -21,6 +21,7 @@ import android.util.Log;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 import com.sicpc.android.nav.NavNode;
 import com.sicpc.android.nav.NavNode.ActionType;
 import com.sicpc.ane.functions.PlayVideoFunction;
@@ -30,7 +31,8 @@ import com.sicpc.ane.functions.PlayVideoFunction;
  * Parse app_config.xml.
  * 
  */
-public class AppConfigProvider implements Provider<AppConfig> {
+@Singleton
+public class AppConfigProvider {
 	private static String TAG = "AppConfigParser";
 	private AppConfig cfg;
 	private InputStream configXmlIs;
@@ -193,7 +195,6 @@ public class AppConfigProvider implements Provider<AppConfig> {
 		this.cfg = cfg;
 	}
 
-	@Override
 	public AppConfig get() {
 		Log.i(TAG, "AppConfigProvider get.");
 		if (this.cfg == null) {

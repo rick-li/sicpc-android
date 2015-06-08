@@ -1,7 +1,10 @@
 package com.sicpc.android.actions.video;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -78,10 +81,14 @@ public class VideoViewActivity extends Activity implements MediaPlayer.OnErrorLi
 			@Override
 			public boolean onError(MediaPlayer arg0, int arg1, int arg2)
 			{
-				if (dialog.isShowing())
-				{
-					dialog.dismiss();
-				}
+				dialog = new AlertDialog.Builder(VideoViewActivity.this).setTitle("無法播放").setPositiveButton("OK", new OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						
+					}
+				}).create();
+				
 				return false;
 			}
 		});
@@ -128,11 +135,10 @@ public class VideoViewActivity extends Activity implements MediaPlayer.OnErrorLi
 		super.onBackPressed();
 
 		Log.d(TAG, "back pressed in video");
-//		if (dialog.isShowing())
-//		{
-//			Log.d(TAG, "dialog is showing...");
-//			dialog.dismiss();
-//		}
+		if (dialog.isShowing())
+		{
+			dialog.dismiss();
+		}
 		this.finish();
 	}
 

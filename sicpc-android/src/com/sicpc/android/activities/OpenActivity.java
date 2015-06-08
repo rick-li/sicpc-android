@@ -17,17 +17,21 @@ import android.widget.VideoView;
 
 import com.sicpc.android.R;
 import com.sicpc.android.config.AppConfig;
+import com.sicpc.android.config.AppConfigProvider;
 
 public class OpenActivity extends RoboActivity {
 	private static final String TAG = "OpenActivity";
 	
-	@Inject AppConfig appConfig;
+	@Inject
+	AppConfigProvider configProvider;
+	
+	AppConfig appConfig;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.open);
-		
+		appConfig = configProvider.get();
 		
 		Button skipBtn = (Button)this.findViewById(R.id.skip_btn);
 		skipBtn.setOnClickListener(new View.OnClickListener(){

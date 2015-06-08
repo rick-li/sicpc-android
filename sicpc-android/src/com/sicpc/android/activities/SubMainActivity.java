@@ -19,6 +19,7 @@ import com.google.inject.Inject;
 import com.sicpc.android.R;
 import com.sicpc.android.actions.ImageFragment;
 import com.sicpc.android.config.AppConfig;
+import com.sicpc.android.config.AppConfigProvider;
 import com.sicpc.android.nav.NavNode;
 import com.sicpc.android.nav.SecondNavController;
 
@@ -26,8 +27,10 @@ public class SubMainActivity extends RoboFragmentActivity {
 	public static final String CONTENT_ID = "content_id";
 	private static final String TAG = "SubMainActivity";
 
-	@Inject
+	
 	AppConfig appConfig;
+	@Inject
+	AppConfigProvider configProvider;
 	private SecondNavController navController;
 
 	@InjectView(R.id.sub_main_root)
@@ -37,8 +40,9 @@ public class SubMainActivity extends RoboFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.i(TAG, "on Create is called.");
-
 		super.onCreate(savedInstanceState);
+		
+		appConfig = configProvider.get();
 		String contentId = this.getIntent().getExtras().getString(CONTENT_ID);
 		NavNode contentNode = null;
 		for(int i=0; i< appConfig.getNavNodes().size(); i++){
