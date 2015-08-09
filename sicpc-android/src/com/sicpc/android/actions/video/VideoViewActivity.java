@@ -135,7 +135,7 @@ public class VideoViewActivity extends Activity implements MediaPlayer.OnErrorLi
 		super.onBackPressed();
 
 		Log.d(TAG, "back pressed in video");
-		if (dialog.isShowing())
+		if (dialog != null && dialog.isShowing())
 		{
 			dialog.dismiss();
 		}
